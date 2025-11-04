@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MARVEL HR SOLUTIONS: Be Heroic</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- NEW COLOR AND FONT VARIABLES --- */
+        :root {
+            --color-black: #000000;
+            --color-red: #a6171c; /* Main Accent Red */
+            --color-yellow: #dfb127; /* Secondary Accent Yellow */
+            --color-dark-grey: #1c1a1b;
+            --color-medium-blue: #1f4280;
+            --color-green: #027953;
+            --color-off-white: #f7efdf; /* Used for text/background contrast */
+            --font-heading: 'Bebas Neue', cursive;
+            --font-body: 'Open Sans', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--color-black);
+            color: var(--color-off-white);
+            font-family: var(--font-body);
+            overflow-x: hidden; /* Prevent horizontal scroll from parallax */
+        }
+
+        /* === NAVBAR === */
+        header {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 1rem 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--color-red);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--color-yellow);
+            font-family: var(--font-heading);
+            letter-spacing: 5px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--color-off-white);
+            font-size: 1rem;
+            position: relative;
+            transition: 0.3s;
+            font-weight: 700;
+        }
+
+        nav ul li a::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-red);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--color-red);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 100vh;
+            padding: 8rem 8% 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-text {
+            max-width: 550px;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-family: var(--font-heading);
+            font-size: 5rem;
+            line-height: 1;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            text-shadow: 4px 4px 0 var(--color-red), 8px 8px 0 var(--color-dark-grey);
+            color: var(--color-yellow);
+            transition: text-shadow 0.2s ease;
+        }
+
+        .hero-text p {
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            color: var(--color-off-white);
+            margin-bottom: 2rem;
+        }
+
+        .cta-btn {
+            background: var(--color-red);
+            color: var(--color-off-white);
+            border: 2px solid var(--color-red);
+            padding: 1rem 2.5rem;
+            font-size: 1rem;
+            border-radius: 5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 700;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .cta-btn:hover {
+            background: var(--color-yellow);
+            color: var(--color-black);
+            box-shadow: 0 0 25px var(--color-yellow);
+            transform: translateY(-3px) scale(1.05);
+        }
+
+        /* HERO IMAGE */
+        .hero-image {
+            width: 450px;
+            filter: drop-shadow(0 0 40px var(--color-red)) drop-shadow(0 0 10px var(--color-yellow));
+            transform-style: preserve-3d;
+            transition: transform 0.1s ease-out;
+            animation: floatHero 3s ease-in-out infinite;
+        }
+
+        @keyframes floatHero {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* PARTICLES */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            background: radial-gradient(circle, var(--color-yellow), transparent);
+            animation: fadeOut 1s linear forwards;
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                transform: scale(3);
+            }
+        }
+
+        /* === MARVEL APPROACH SECTION (NEW) === */
+        .marvel-approach-section {
+            background: var(--color-black); /* Dark background */
+            padding: 5rem 8%;
+            text-align: center;
+            position: relative; /* For comic bubbles */
+            z-index: 5; /* Ensure it sits above anything potentially behind it */
+        }
+
+        .marvel-approach-section h2 {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            color: var(--color-off-white);
+            text-transform: uppercase;
+            background-color: var(--color-red); /* Red background for title block */
+            display: inline-block;
+            padding: 0.5rem 2rem;
+            margin-bottom: 4rem;
+            border-radius: 5px;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+        }
+
+        .approach-cards {
+            display: flex;
+            justify-content: center;
+            gap: 2rem; /* Space between cards */
+            flex-wrap: wrap; /* Allow cards to wrap on smaller screens */
+        }
+
+        .approach-card {
+            background: var(--color-dark-grey); /* Default card background */
+            padding: 2.5rem 2rem;
+            border-radius: 10px;
+            width: 350px; /* Fixed width for consistency */
+            text-align: left;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative; /* For tilt effect */
+            transform-style: preserve-3d; /* For the 3D tilt */
+        }
+
+        .approach-card:hover {
+            transform: translateY(-15px) rotateX(5deg) rotateY(5deg) scale(1.03);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.7), 0 0 30px rgba(var(--card-hover-rgb), 0.7);
+        }
+
+        .approach-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: inherit; /* Inherit color from specific card styles below */
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+
+        .approach-card p {
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #ccc; /* Lighter text for readability */
+        }
+
+        .approach-card .learn-more-btn {
+            background: var(--color-dark-grey); /* Default button background */
+            color: var(--color-off-white);
+            border: none;
+            padding: 0.7rem 1.5rem;
+            font-size: 0.9rem;
+            border-radius: 5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            box-shadow: inset 0 0 0 2px; /* Subtle border on hover */
+        }
+
+        .approach-card .learn-more-btn:hover {
+            transform: translateY(-2px);
+            background: var(--color-red); /* Generic hover effect for buttons */
+            box-shadow: 0 0 15px var(--color-red);
+            color: var(--color-off-white);
+        }
+
+        /* Specific Card Colors */
+        .digital-marketing {
+            background: var(--color-yellow);
+            color: var(--color-black); /* Text on yellow background */
+            --card-hover-rgb: 223, 177, 39; /* RGB for yellow */
+        }
+        .digital-marketing h3 { color: var(--color-black); } /* Ensure heading is black */
+        .digital-marketing p { color: #555; } /* Darker text for readability */
+        .digital-marketing .learn-more-btn {
+            background: var(--color-black);
+            color: var(--color-yellow);
+            box-shadow: inset 0 0 0 2px var(--color-yellow);
+        }
+        .digital-marketing .learn-more-btn:hover {
+            background: var(--color-red);
+            color: var(--color-off-white);
+        }
+
+
+        .business-development {
+            background: var(--color-green);
+            color: var(--color-off-white);
+            --card-hover-rgb: 2, 121, 83; /* RGB for green */
+        }
+        .business-development h3 { color: var(--color-off-white); }
+        .business-development .learn-more-btn {
+            background: var(--color-dark-grey);
+            color: var(--color-green);
+            box-shadow: inset 0 0 0 2px var(--color-green);
+        }
+        .business-development .learn-more-btn:hover {
+            background: var(--color-red);
+            color: var(--color-off-white);
+        }
+
+        .bbbee-partnerships {
+            background: var(--color-medium-blue);
+            color: var(--color-off-white);
+            --card-hover-rgb: 31, 66, 128; /* RGB for blue */
+        }
+        .bbbee-partnerships h3 { color: var(--color-off-white); }
+        .bbbee-partnerships .learn-more-btn {
+            background: var(--color-dark-grey);
+            color: var(--color-medium-blue);
+            box-shadow: inset 0 0 0 2px var(--color-medium-blue);
+        }
+        .bbbee-partnerships .learn-more-btn:hover {
+            background: var(--color-red);
+            color: var(--color-off-white);
+        }
+
+        /* Comic Bubbles (Stylized and positioned) */
+        .comic-bubble-left,
+        .comic-bubble-right {
+            position: absolute;
+            opacity: 0.3; /* Subtle */
+            pointer-events: none;
+            transform-style: preserve-3d;
+            animation: bubbleFloat 10s ease-in-out infinite;
+        }
+
+        .comic-bubble-left {
+            width: 200px;
+            height: 150px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150"><path fill="%23f7efdf" d="M100,10 C140,0 190,30 190,70 C190,110 160,140 100,140 C40,140 10,110 10,70 C10,30 60,0 100,10 Z M12,85 C10,95 0,110 0,110 C0,110 10,120 15,115 L12,85 Z"/></svg>') no-repeat center center / contain;
+            top: 10%;
+            left: 5%;
+            transform: rotateZ(-15deg);
+        }
+
+        .comic-bubble-right {
+            width: 180px;
+            height: 120px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 120"><path fill="%23f7efdf" d="M90,5 C120,-5 170,20 170,60 C170,100 130,120 90,120 C50,120 10,100 10,60 C10,20 60,-5 90,5 Z M160,70 C170,75 180,80 180,80 C180,80 170,85 165,80 L160,70 Z"/></svg>') no-repeat center center / contain;
+            top: 20%;
+            right: 8%;
+            transform: rotateZ(10deg);
+        }
+
+        @keyframes bubbleFloat {
+            0%, 100% { transform: translateY(0) rotateY(0deg) rotateX(0deg); }
+            50% { transform: translateY(-15px) rotateY(5deg) rotateX(-5deg); }
+        }
+
+
+        /* RESPONSIVE */
+        @media (max-width: 1200px) {
+            .approach-cards {
+                gap: 1.5rem;
+            }
+            .approach-card {
+                width: 300px;
+                padding: 2rem 1.5rem;
+            }
+            .approach-card h3 {
+                font-size: 1.6rem;
+            }
+            .approach-card p {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 900px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 1rem 5%;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .hero-section {
+                flex-direction: column;
+                text-align: center;
+                padding: 10rem 5% 4rem;
+            }
+
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+
+            .hero-image {
+                width: 300px;
+                margin-top: 2rem;
+            }
+
+            .marvel-approach-section h2 {
+                font-size: 2.5rem;
+                margin-bottom: 3rem;
+                padding: 0.4rem 1.5rem;
+            }
+
+            .approach-cards {
+                flex-direction: column; /* Stack cards vertically */
+                align-items: center; /* Center stacked cards */
+                gap: 2rem;
+            }
+            .approach-card {
+                width: 90%; /* Take more width on small screens */
+                max-width: 400px; /* Limit max width */
+            }
+
+            .comic-bubble-left,
+            .comic-bubble-right {
+                display: none; /* Hide bubbles on very small screens */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">MARVEL RESOLUTIONS</div>
+    <nav>
+        <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">B-BBEE Partnerships</a></li>
+            <li><a href="#">Events</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero-section">
+    <div class="hero-text">
+        <h1>Every Brand Has The Power<br>To Be Heroic</h1>
+        <p>We help businesses grow through digital marketing, business development, and partnerships that drive real impact.</p>
+        <button class="cta-btn">Unleash Your Brand</button>
+    </div>
+
+    <img src="wind.png" alt="Superhero" class="hero-image">
+</section>
+
+<section class="marvel-approach-section">
+    <div class="comic-bubble-left"></div>
+    <div class="comic-bubble-right"></div>
+    <h2>THE MARVEL APPROACH</h2>
+    <div class="approach-cards">
+        <div class="approach-card digital-marketing">
+            <h3>DIGITAL MARKETING</h3>
+            <p>We help brands amplify their voice, attract their ideal audience, and convert engagement into revenue. From content strategy and SEO to social media campaigns, email marketing, and paid advertising — we design data-driven, results-focused digital journeys that grow awareness, generate leads, and build your brand's credibility.</p>
+            <button class="learn-more-btn">LEARN MORE</button>
+        </div>
+        <div class="approach-card business-development">
+            <h3>BUSINESS DEVELOPMENT</h3>
+            <p>We partner with you to unlock new growth pathways. Through bespoke market research, opportunity mapping, strategic outreach, and pipeline optimization, we help you win clients, enter new markets, and scale sustainably. We don't just pursue opportunities — we create them.</p>
+            <button class="learn-more-btn">LEARN MORE</button>
+        </div>
+        <div class="approach-card bbbee-partnerships">
+            <h3>B-BBEE STRATEGIC<br>PARTNERSHIPS</h3>
+            <p>We help corporates turn compliance into impact. With expertise in Skills Development, Enterprise & Supplier Development, Socio-Economic Development, and the YES program, we design transformation strategies that are compliant, practical, and aligned with your business goals.</p>
+            <button class="learn-more-btn">LEARN MORE</button>
+        </div>
+    </div>
+</section>
+
+<script>
+    const hero = document.querySelector('.hero-image');
+    const title = document.querySelector('.hero-text h1');
+    const heroSection = document.querySelector('.hero-section');
+    
+    // Use the container's size for better centering
+    let containerRect = heroSection.getBoundingClientRect();
+
+    document.addEventListener('mousemove', (e) => {
+        // Calculate offset relative to the hero section container
+        const centerX = containerRect.left + containerRect.width / 2;
+        const centerY = containerRect.top + containerRect.height / 2;
+
+        // Calculate rotation based on cursor deviation from center
+        const xRotate = (e.clientY - centerY) / 40; // Tilt X based on vertical movement
+        const yRotate = (e.clientX - centerX) / 40; // Tilt Y based on horizontal movement
+        
+        // Tilt the hero image (subtler effect)
+        hero.style.transform = `rotateX(${xRotate}deg) rotateY(${-yRotate}deg) scale(1.02)`;
+        
+        // Shift the title shadow (stronger effect)
+        const shadowX = (e.clientX - centerX) / 20;
+        const shadowY = (e.clientY - centerY) / 20;
+        
+        // Apply Comic Book Shadow Shift
+        title.style.textShadow = 
+            `${shadowX}px ${shadowY}px 0 var(--color-red), 
+             ${shadowX + 4}px ${shadowY + 4}px 0 var(--color-dark-grey)`;
+    });
+
+    document.addEventListener('mouseleave', () => {
+        hero.style.transform = `rotateX(0deg) rotateY(0deg) scale(1)`;
+        // Restore initial title shadow
+        title.style.textShadow = `4px 4px 0 var(--color-red), 8px 8px 0 var(--color-dark-grey)`;
+    });
+
+    // Recalculate container size on resize to maintain accurate parallax center
+    window.addEventListener('resize', () => {
+        containerRect = heroSection.getBoundingClientRect();
+    });
+
+    // Particle trail (Kept the original logic, updated color in CSS)
+    document.addEventListener('mousemove', function(e) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        particle.style.width = particle.style.height = Math.random() * 8 + 4 + 'px';
+        particle.style.left = e.pageX + 'px';
+        particle.style.top = e.pageY + 'px';
+        document.body.appendChild(particle);
+        setTimeout(() => particle.remove(), 1000);
+    });
+
+    // New: Cursor-based tilt for the approach cards
+    const approachCards = document.querySelectorAll('.approach-card');
+
+    approachCards.forEach(card => {
+        card.addEventListener('mousemove', function(e) {
+            const cardRect = this.getBoundingClientRect();
+            const cardCenterX = cardRect.left + cardRect.width / 2;
+            const cardCenterY = cardRect.top + cardRect.height / 2;
+
+            const xPos = (e.clientX - cardCenterX) / (cardRect.width / 2); // -1 to 1 range
+            const yPos = (e.clientY - cardCenterY) / (cardRect.height / 2); // -1 to 1 range
+
+            const xRotate = yPos * 10; // More tilt for Y-axis
+            const yRotate = -xPos * 10; // More tilt for X-axis
+
+            this.style.transform = `perspective(1000px) rotateX(${xRotate}deg) rotateY(${yRotate}deg) scale(1.05)`;
+        });
+
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)`;
+        });
+    });
+
+    // New: Cursor-based tilt for the comic bubbles in the approach section
+    const comicBubbleLeft = document.querySelector('.comic-bubble-left');
+    const comicBubbleRight = document.querySelector('.comic-bubble-right');
+    const approachSection = document.querySelector('.marvel-approach-section');
+
+    approachSection.addEventListener('mousemove', (e) => {
+        const sectionRect = approachSection.getBoundingClientRect();
+        const sectionCenterX = sectionRect.left + sectionRect.width / 2;
+        const sectionCenterY = sectionRect.top + sectionRect.height / 2;
+
+        const xMove = (e.clientX - sectionCenterX) / 100; // Affect position
+        const yMove = (e.clientY - sectionCenterY) / 100;
+
+        const xRotate = (e.clientY - sectionCenterY) / 200; // Affect rotation
+        const yRotate = (e.clientX - sectionCenterX) / 200;
+
+        comicBubbleLeft.style.transform = `translate(${xMove * 0.5}px, ${yMove * 0.5}px) rotateX(${-xRotate}deg) rotateY(${yRotate}deg) rotateZ(-15deg) `;
+        comicBubbleRight.style.transform = `translate(${-xMove * 0.5}px, ${-yMove * 0.5}px) rotateX(${xRotate}deg) rotateY(${-yRotate}deg) rotateZ(10deg)`;
+    });
+
+    approachSection.addEventListener('mouseleave', () => {
+        comicBubbleLeft.style.transform = `translate(0,0) rotateX(0deg) rotateY(0deg) rotateZ(-15deg)`;
+        comicBubbleRight.style.transform = `translate(0,0) rotateX(0deg) rotateY(0deg) rotateZ(10deg)`;
+    });
+
+</script>
+
+</body>
+</html>
