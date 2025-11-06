@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MARVEL RESOLUTIONS | Contact Our Team</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* --- NEW COLOR AND FONT VARIABLES --- */
+        :root {
+            --color-black: #000000;
+            --color-red: #a6171c; /* Main Accent Red */
+            --color-yellow: #dfb127; /* Secondary Accent Yellow */
+            --color-dark-grey: #1c1a1b;
+            --color-medium-blue: #1f4280;
+            --color-green: #027953; /* Contact Accent Green */
+            --color-off-white: #f7efdf;
+            --font-heading: 'Bebas Neue', cursive;
+            --font-body: 'Open Sans', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--color-black);
+            color: var(--color-off-white);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* === NAVBAR (Retained) === */
+        header {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 1rem 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--color-red);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--color-yellow);
+            font-family: var(--font-heading);
+            letter-spacing: 5px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--color-off-white);
+            font-size: 1rem;
+            position: relative;
+            transition: 0.3s;
+            font-weight: 700;
+        }
+
+        nav ul li a::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-red);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--color-red);
+        }
+
+        nav ul li a:hover::after, nav ul li a.active::after {
+            width: 100%;
+        }
+        
+        /* === CONTACT HERO SECTION (Custom Green/Yellow) === */
+        .contact-hero {
+            position: relative;
+            padding: 12rem 8% 4rem;
+            background: var(--color-dark-grey);
+            /* Green Accent for Contact */
+            border-bottom: 5px solid var(--color-green); 
+            text-align: center;
+            /* Green/Black Gradient */
+            background: radial-gradient(circle at center, 
+                rgba(2, 121, 83, 0.5) 0%, /* Green center */
+                var(--color-black) 80% /* Fades to absolute black */
+            );
+            box-shadow: 0 0 50px rgba(2, 121, 83, 0.5) inset;
+        }
+
+        .contact-hero h1 {
+            font-family: var(--font-heading);
+            font-size: 4rem;
+            line-height: 1;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            color: var(--color-off-white);
+            letter-spacing: 4px;
+            /* Green/Yellow/Black Shadow */
+            text-shadow: 4px 4px 0 var(--color-yellow), 8px 8px 0 var(--color-black); 
+        }
+
+        .contact-hero p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            color: #ccc;
+        }
+        
+        /* === CONTACT GRID AND FORM === */
+        .contact-grid-section {
+            padding: 6rem 8%;
+            background: var(--color-black);
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr; /* Info on left, Form larger on right */
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .info-block h2, .form-block h2 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            color: var(--color-green);
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+        }
+        
+        /* Contact Details List */
+        .contact-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .contact-list li {
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .contact-list li i {
+            color: var(--color-yellow);
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            margin-top: 3px;
+        }
+        
+        .contact-list li strong {
+            display: block;
+            margin-bottom: 0.3rem;
+            font-weight: 700;
+            color: var(--color-off-white);
+        }
+        
+        /* Contact Form Styles */
+        .contact-form {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 1rem;
+            background: var(--color-dark-grey);
+            border: 1px solid var(--color-green);
+            border-radius: 5px;
+            color: var(--color-off-white);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            border-color: var(--color-yellow);
+            outline: none;
+            box-shadow: 0 0 10px rgba(223, 177, 39, 0.5);
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            color: var(--color-off-white);
+        }
+        
+        /* Custom Submit Button */
+        .submit-btn {
+            background: var(--color-green);
+            color: var(--color-black);
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            font-family: var(--font-heading);
+            text-transform: uppercase;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            border: 2px solid var(--color-green);
+        }
+        
+        .submit-btn:hover {
+            background: var(--color-black);
+            color: var(--color-green);
+            border-color: var(--color-green);
+            box-shadow: 0 0 15px var(--color-green);
+            transform: translateY(-2px);
+        }
+
+
+        /* --- Footer Styles Retained --- */
+        footer {
+            background: var(--color-dark-grey);
+            padding: 3rem 8%;
+            border-top: 3px solid var(--color-red);
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .social-icons a {
+            color: var(--color-off-white);
+            font-size: 1.8rem;
+            margin: 0 0.8rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .social-icons a:hover {
+            color: var(--color-yellow);
+            transform: translateY(-5px) scale(1.1);
+        }
+        
+        .social-icons a.fa-facebook-f:hover { color: #3b5998; }
+        .social-icons a.fa-twitter:hover { color: #1da1f2; }
+        .social-icons a.fa-linkedin-in:hover { color: #0e76a8; }
+        .social-icons a.fa-instagram:hover { color: #E1306C; }
+        .social-icons a.fa-envelope:hover { color: var(--color-red); }
+
+        .footer-text {
+            color: #999;
+            font-size: 0.9rem;
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 1rem 5%;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+            
+            .contact-hero h1 {
+                font-size: 3rem;
+            }
+            
+            .contact-hero {
+                padding: 8rem 5% 3rem;
+            }
+
+            .contact-grid-section {
+                padding: 4rem 5%;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr; /* Stack columns on small screens */
+                gap: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">MARVEL RESOLUTIONS</div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="bbbee.html">B-BBEE Partnerships</a></li>
+            <li><a href="events.html">Events</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="contact-hero">
+    <h1>ACTIVATE YOUR COMMUNICATION CHANNEL</h1>
+    <p>Ready to deploy a solution, inquire about a partnership, or schedule a strategic audit? Use the form below or contact us directly using the details provided.</p>
+</section>
+
+<section class="contact-grid-section">
+    <div class="contact-grid">
+        
+        <div class="info-block">
+            <h2>OUR COMMAND CENTER</h2>
+            <ul class="contact-list">
+                <li>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <strong>Physical Address</strong>
+                        Level 5, The Nexus Building<br>
+                        10 Strategic Boulevard, Midrand, 1685<br>
+                        Gauteng, South Africa
+                    </div>
+                </li>
+                <li>
+                    <i class="fas fa-phone-alt"></i>
+                    <div>
+                        <strong>Call the Experts</strong>
+                        +27 11 555 1234
+                    </div>
+                </li>
+                <li>
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <strong>Mission-Critical Email</strong>
+                        <a href="mailto:info@marvelresolutions.co.za" style="color: var(--color-off-white);">info@marvelresolutions.co.za</a>
+                    </div>
+                </li>
+                <li>
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <strong>Hours of Operation</strong>
+                        Mon - Fri: 8:00 AM - 5:00 PM (SAST)
+                    </div>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="form-block">
+            <h2>INITIATE CONTACT</h2>
+            <form class="contact-form" onsubmit="alert('Message Sent! Our team will be in touch shortly.'); return false;">
+                <div class="form-group">
+                    <label for="name">Your Hero Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Secure Email Channel</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="service">Mission Type</label>
+                    <select id="service" name="service" required>
+                        <option value="">Select a Primary Service...</option>
+                        <option value="bbbee">B-BBEE Strategy & Audit</option>
+                        <option value="digital">Digital Strategy & Marketing</option>
+                        <option value="business_dev">Business Development & Sales</option>
+                        <option value="training">Training & Workshops</option>
+                        <option value="general">General Inquiry</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Detailed Briefing</label>
+                    <textarea id="message" name="message" rows="5" required placeholder="Tell us about your challenge or goal..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">SEND MESSAGE <i class="fas fa-paper-plane" style="margin-left: 0.5rem;"></i></button>
+            </form>
+        </div>
+        
+    </div>
+</section>
+
+<footer>
+    <div class="footer-content">
+        <div class="social-icons">
+            <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+        <div class="footer-text">
+            &copy; 2025 MARVEL RESOLUTIONS. All rights reserved. | <a href="#" style="color: var(--color-red); text-decoration: none;">Privacy Policy</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

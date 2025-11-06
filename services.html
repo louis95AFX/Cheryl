@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MARVEL RESOLUTIONS | Our Superpowers</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* --- NEW COLOR AND FONT VARIABLES --- */
+        :root {
+            --color-black: #000000;
+            --color-red: #a6171c; /* Main Accent Red */
+            --color-yellow: #dfb127; /* Secondary Accent Yellow */
+            --color-dark-grey: #1c1a1b;
+            --color-medium-blue: #1f4280;
+            --color-green: #027953;
+            --color-off-white: #f7efdf; /* Used for text/background contrast */
+            --font-heading: 'Bebas Neue', cursive;
+            --font-body: 'Open Sans', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--color-black);
+            color: var(--color-off-white);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+        }
+
+        /* === NAVBAR === */
+        header {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 1rem 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--color-red);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--color-yellow);
+            font-family: var(--font-heading);
+            letter-spacing: 5px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--color-off-white);
+            font-size: 1rem;
+            position: relative;
+            transition: 0.3s;
+            font-weight: 700;
+        }
+
+        nav ul li a::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-red);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--color-red);
+        }
+
+        nav ul li a:hover::after, nav ul li a.active::after {
+            width: 100%;
+        }
+        
+        /* === SERVICES PAGE HERO === */
+        .services-hero {
+            position: relative;
+            padding: 12rem 8% 4rem;
+            background: var(--color-dark-grey);
+            border-bottom: 5px solid var(--color-red);
+            text-align: center;
+        }
+
+        .services-hero h1 {
+            font-family: var(--font-heading);
+            font-size: 4.5rem;
+            line-height: 1;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            color: var(--color-off-white);
+            letter-spacing: 4px;
+            text-shadow: 4px 4px 0 var(--color-red);
+        }
+
+        .services-hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            color: #ccc;
+        }
+
+        .hero-banner-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            object-position: top;
+            opacity: 0.2; /* Subtle background */
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        
+        .services-hero > * {
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* === MAIN SERVICES GRID === */
+        .services-grid-section {
+            padding: 6rem 8%;
+            background: var(--color-black);
+            position: relative;
+        }
+
+        .section-title-block {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            color: var(--color-off-white);
+            text-transform: uppercase;
+            background-color: var(--color-yellow);
+            color: var(--color-black);
+            display: inline-block;
+            padding: 0.5rem 2rem;
+            margin-bottom: 5rem;
+            border-radius: 5px;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+            border: 3px solid var(--color-red);
+        }
+
+        .service-card {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 4rem;
+            padding: 3rem;
+            background: var(--color-dark-grey);
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+            border-left: 8px solid; /* Dynamic color based on class */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+        }
+
+        .service-card h2 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .service-card .icon-container {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            align-self: flex-start;
+            padding: 10px;
+            border-radius: 50%;
+            border: 3px solid; /* Dynamic color based on class */
+        }
+        
+        .service-card ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 1rem;
+        }
+
+        .service-card ul li {
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+        }
+        
+        .service-card ul li:last-child {
+            border-bottom: none;
+        }
+
+        .service-card ul li i {
+            margin-right: 10px;
+        }
+
+        /* Service 1: DIGITAL MARKETING - Yellow/Red */
+        .service-digital {
+            border-color: var(--color-yellow);
+        }
+        .service-digital h2 { color: var(--color-yellow); }
+        .service-digital .icon-container { 
+            color: var(--color-yellow); 
+            border-color: var(--color-yellow);
+            box-shadow: 0 0 15px rgba(223, 177, 39, 0.5);
+        }
+        .service-digital ul li i { color: var(--color-red); } /* Checklist icon accent */
+
+        /* Service 2: BUSINESS DEVELOPMENT - Green/Red */
+        .service-bizdev {
+            border-color: var(--color-green);
+        }
+        .service-bizdev h2 { color: var(--color-green); }
+        .service-bizdev .icon-container { 
+            color: var(--color-green); 
+            border-color: var(--color-green);
+            box-shadow: 0 0 15px rgba(2, 121, 83, 0.5);
+        }
+        .service-bizdev ul li i { color: var(--color-red); } /* Checklist icon accent */
+
+        /* Service 3: B-BBEE PARTNERSHIPS - Blue/Yellow */
+        .service-bbbee {
+            border-color: var(--color-medium-blue);
+        }
+        .service-bbbee h2 { color: var(--color-medium-blue); }
+        .service-bbbee .icon-container { 
+            color: var(--color-medium-blue); 
+            border-color: var(--color-medium-blue);
+            box-shadow: 0 0 15px rgba(31, 66, 128, 0.5);
+        }
+        .service-bbbee ul li i { color: var(--color-yellow); } /* Checklist icon accent */
+        
+        /* === CALL TO ACTION (CTA) SECTION === */
+        .cta-section-services {
+            background: var(--color-red); /* High-impact red background */
+            padding: 5rem 8%;
+            text-align: center;
+            border-top: 5px solid var(--color-yellow);
+        }
+
+        .cta-section-services h2 {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            color: var(--color-off-white);
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            letter-spacing: 3px;
+            text-shadow: 3px 3px 0 var(--color-black);
+        }
+
+        .cta-section-services p {
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            color: var(--color-off-white);
+        }
+
+        .cta-btn {
+            /* Retained from original CSS */
+            background: var(--color-black);
+            color: var(--color-yellow);
+            border: 2px solid var(--color-yellow);
+            padding: 1rem 3rem;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 700;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
+        }
+
+        .cta-btn:hover {
+            background: var(--color-yellow);
+            color: var(--color-black);
+            box-shadow: 0 0 30px var(--color-yellow);
+            transform: translateY(-5px) scale(1.05);
+        }
+
+
+        /* --- Footer and Responsive Styles retained from original --- */
+        
+        /* === FOOTER STYLES === */
+        footer {
+            background: var(--color-dark-grey);
+            padding: 3rem 8%;
+            border-top: 3px solid var(--color-red);
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .social-icons a {
+            color: var(--color-off-white);
+            font-size: 1.8rem;
+            margin: 0 0.8rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .social-icons a:hover {
+            color: var(--color-yellow);
+            transform: translateY(-5px) scale(1.1);
+        }
+        
+        .social-icons a.fa-facebook-f:hover { color: #3b5998; }
+        .social-icons a.fa-twitter:hover { color: #1da1f2; }
+        .social-icons a.fa-linkedin-in:hover { color: #0e76a8; }
+        .social-icons a.fa-instagram:hover { color: #E1306C; }
+        .social-icons a.fa-envelope:hover { color: var(--color-red); }
+
+        .footer-text {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        /* RESPONSIVE (Adjusted for services page content) */
+        @media (min-width: 900px) {
+            .services-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+            }
+        }
+        
+        @media (max-width: 900px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 1rem 5%;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+            
+            .services-hero h1 {
+                font-size: 3rem;
+            }
+
+            .services-hero {
+                padding: 8rem 5% 3rem;
+            }
+
+            .section-title-block {
+                font-size: 2rem;
+                padding: 0.3rem 1rem;
+                margin-bottom: 3rem;
+            }
+            
+            .services-grid-section {
+                padding: 4rem 5%;
+            }
+
+            .service-card {
+                padding: 2rem;
+                margin-bottom: 2rem;
+            }
+        }
+        /* Add this new rule to your existing CSS block */
+.services-bg-gradient {
+    /* Use a dark radial gradient for a powerful, heroic look */
+    background: radial-gradient(circle at center, 
+        rgba(30, 0, 0, 0.9) 0%, /* Darker center, slightly reddish */
+        var(--color-black) 80% /* Fades to absolute black */
+    );
+    /* Adding subtle color shadows for impact */
+    box-shadow: 0 0 50px rgba(166, 23, 28, 0.5) inset; /* Soft Red glow inset */
+}
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">MARVEL RESOLUTIONS</div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+             <li><a href="BB-BEE.html">B-BBEE Partnerships</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="services-hero services-bg-gradient">
+    <h1>OUR SUPERPOWERS: SERVICES</h1>
+    <p>We combine strategic thinking, advanced digital techniques, and robust partnership frameworks to empower your business. These are the three pillars that drive heroic growth.</p>
+    <a href="#cta" class="cta-btn">Start Your Transformation</a>
+</section>
+
+<section class="services-grid-section">
+    <div style="text-align: center;">
+        <span class="section-title-block">THE POWER GRID</span>
+    </div>
+    
+    <div class="services-grid">
+        
+        <div class="service-card service-digital">
+            <div class="icon-container"><i class="fas fa-bullhorn"></i></div>
+            <h2>DIGITAL MARKETING</h2>
+            <p>Amplifying Your Voice in the Digital Metropolis. We build powerful online presences that not only capture attention but convert visitors into loyal customers. Our strategies are data-driven and results-focused, ensuring every campaign is a direct hit.</p>
+            <ul>
+                <li><i class="fas fa-check-circle"></i> Content & SEO Strategy: Dominate search rankings.</li>
+                <li><i class="fas fa-check-circle"></i> Paid Advertising (PPC/Social): Targeted lead generation.</li>
+                <li><i class="fas fa-check-circle"></i> Social Media Management: Build an engaged community.</li>
+                <li><i class="fas fa-check-circle"></i> Email Nurturing Campaigns: Convert leads effectively.</li>
+            </ul>
+        </div>
+
+        <div class="service-card service-bizdev">
+            <div class="icon-container"><i class="fas fa-chart-line"></i></div>
+            <h2>BUSINESS DEVELOPMENT</h2>
+            <p>Unlocking Your True Potential. We don't just find opportunities; we architect them. From entering complex markets to optimizing internal sales pipelines, our consulting services are designed to create sustainable, scalable growth and secure high-value clients.</p>
+            <ul>
+                <li><i class="fas fa-check-circle"></i> Strategic Market Entry: Identify and penetrate new sectors.</li>
+                <li><i class="fas fa-check-circle"></i> Client Acquisition Funnel Optimization: Maximize win rates.</li>
+                <li><i class="fas fa-check-circle"></i> Sales Training & Enablement: Equip your team with superpowers.</li>
+                <li><i class="fas fa-check-circle"></i> Partnership Brokering: Find symbiotic relationships.</li>
+            </ul>
+        </div>
+
+        <div class="service-card service-bbbee">
+            <div class="icon-container"><i class="fas fa-handshake"></i></div>
+            <h2>B-BBEE PARTNERSHIPS</h2>
+            <p>Transformation with Purpose and Impact. We turn B-BBEE compliance into a competitive advantage. Our expert advice ensures your transformation strategies are meaningful, measurable, and aligned with legislation while delivering tangible socio-economic benefit.</p>
+            <ul>
+                <li><i class="fas fa-check-circle"></i> Skills & Enterprise Development: Maximize scorecard points.</li>
+                <li><i class="fas fa-check-circle"></i> YES Program Integration: Boost youth employment points.</li>
+                <li><i class="fas fa-check-circle"></i> Socio-Economic Development: Create lasting community impact.</li>
+                <li><i class="fas fa-check-circle"></i> Strategy Audits & Planning: Future-proof your compliance.</li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+
+<section class="services-hero services-bg-gradient">
+    <h1>READY TO UNLEASH YOUR BRAND'S POTENTIAL?</h1>
+    <p>Don't settle for average. Partner with MARVEL RESOLUTIONS and tap into the strategic guidance and execution power you need to conquer your market.</p>
+    <a href="contact.html" class="cta-btn">ACTIVATE YOUR PLAN NOW <i class="fas fa-arrow-right" style="margin-left: 0.5rem;"></i></a>
+</section>
+
+<!-- <section class="services-hero services-bg-gradient">
+    <h1>OUR SUPERPOWERS: SERVICES</h1>
+    <p>We combine strategic thinking, advanced digital techniques, and robust partnership frameworks to empower your business. These are the three pillars that drive heroic growth.</p>
+    <a href="#cta" class="cta-btn">Start Your Transformation</a>
+</section> -->
+
+<footer>
+    <div class="footer-content">
+        <div class="social-icons">
+            <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+        <div class="footer-text">
+            &copy; 2025 MARVEL RESOLUTIONS. All rights reserved. | <a href="#" style="color: var(--color-red); text-decoration: none;">Privacy Policy</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // **NOTE**: The complex mousemove/parallax scripts from the homepage hero are intentionally excluded here,
+    // as this page has a simpler hero image and the main interactive focus should be on the detailed service cards.
+    
+    // --- SERVICE CARD TILT EFFECT (RETAINED) ---
+    const serviceCards = document.querySelectorAll('.service-card');
+
+    serviceCards.forEach(card => {
+        card.addEventListener('mousemove', function(e) {
+            const cardRect = this.getBoundingClientRect();
+            const cardCenterX = cardRect.left + cardRect.width / 2;
+            const cardCenterY = cardRect.top + cardRect.height / 2;
+
+            const xPos = (e.clientX - cardCenterX) / (cardRect.width / 2); // -1 to 1 range
+            const yPos = (e.clientY - cardCenterY) / (cardRect.height / 2); // -1 to 1 range
+
+            const xRotate = yPos * 5; // Reduced tilt for Y-axis
+            const yRotate = -xPos * 5; // Reduced tilt for X-axis
+
+            this.style.transform = `perspective(1000px) rotateX(${xRotate}deg) rotateY(${yRotate}deg) scale(1.02)`; // Added subtle scale
+            this.style.boxShadow = `0 20px 50px rgba(0,0,0,0.8), 0 0 30px ${this.style.borderColor}50`;
+        });
+
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)`;
+            this.style.boxShadow = `0 15px 40px rgba(0,0,0,0.5)`;
+        });
+    });
+
+</script>
+
+</body>
+</html>

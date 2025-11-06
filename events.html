@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MARVEL RESOLUTIONS | Events & Training</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* --- NEW COLOR AND FONT VARIABLES --- */
+        :root {
+            --color-black: #000000;
+            --color-red: #a6171c; /* Main Accent Red */
+            --color-yellow: #dfb127; /* Secondary Accent Yellow */
+            --color-dark-grey: #1c1a1b;
+            --color-medium-blue: #1f4280;
+            --color-green: #027953;
+            --color-off-white: #f7efdf;
+            --font-heading: 'Bebas Neue', cursive;
+            --font-body: 'Open Sans', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--color-black);
+            color: var(--color-off-white);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+        }
+
+        /* === NAVBAR (Retained) === */
+        header {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 1rem 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--color-red);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--color-yellow);
+            font-family: var(--font-heading);
+            letter-spacing: 5px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--color-off-white);
+            font-size: 1rem;
+            position: relative;
+            transition: 0.3s;
+            font-weight: 700;
+        }
+
+        nav ul li a::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-red);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--color-red);
+        }
+
+        nav ul li a:hover::after, nav ul li a.active::after {
+            width: 100%;
+        }
+
+        /* === EVENTS HERO SECTION (Custom Yellow/Red) === */
+        .events-hero {
+            position: relative;
+            padding: 12rem 8% 4rem;
+            background: var(--color-dark-grey);
+            /* Yellow Accent for Events */
+            border-bottom: 5px solid var(--color-yellow); 
+            text-align: center;
+            /* Yellow/Black Gradient */
+            background: radial-gradient(circle at center, 
+                rgba(223, 177, 39, 0.5) 0%, /* Yellow center */
+                var(--color-black) 80% /* Fades to absolute black */
+            );
+            box-shadow: 0 0 50px rgba(223, 177, 39, 0.5) inset;
+        }
+
+        .events-hero h1 {
+            font-family: var(--font-heading);
+            font-size: 4rem;
+            line-height: 1;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            color: var(--color-off-white);
+            letter-spacing: 4px;
+            /* Yellow/Red/Black Shadow */
+            text-shadow: 4px 4px 0 var(--color-red), 8px 8px 0 var(--color-black); 
+        }
+
+        .events-hero p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            color: #ccc;
+        }
+        
+        /* === UPCOMING EVENTS GRID === */
+        .events-grid-section {
+            padding: 6rem 8%;
+            background: var(--color-black);
+            text-align: center;
+        }
+
+        .section-title-block {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            color: var(--color-off-white);
+            text-transform: uppercase;
+            background-color: var(--color-red);
+            display: inline-block;
+            padding: 0.5rem 2rem;
+            margin-bottom: 5rem;
+            border-radius: 5px;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+            border: 3px solid var(--color-yellow);
+        }
+        
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .event-card {
+            background: var(--color-dark-grey);
+            border-radius: 10px;
+            text-align: left;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .event-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.7), 0 0 20px var(--color-red);
+        }
+        
+        .event-date-banner {
+            background: var(--color-yellow);
+            color: var(--color-black);
+            font-family: var(--font-heading);
+            padding: 0.5rem 1.5rem;
+            font-size: 1.5rem;
+            text-align: center;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
+            border-bottom: 3px solid var(--color-red);
+        }
+
+        .event-content {
+            padding: 1.5rem;
+        }
+        
+        .event-content h3 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--color-red);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+        
+        .event-content p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #ccc;
+            margin-bottom: 1rem;
+        }
+
+        .event-details {
+            font-size: 0.9rem;
+            color: var(--color-off-white);
+            margin-top: 1rem;
+        }
+
+        .event-details i {
+            color: var(--color-yellow);
+            margin-right: 8px;
+        }
+
+        .register-btn {
+            background: var(--color-red);
+            color: var(--color-off-white);
+            border: 2px solid var(--color-red);
+            padding: 0.7rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 700;
+            display: inline-block;
+            margin-top: 1.5rem;
+        }
+        
+        .register-btn:hover {
+            background: var(--color-yellow);
+            color: var(--color-black);
+            box-shadow: 0 0 15px var(--color-yellow);
+            transform: translateY(-2px);
+        }
+
+        /* === CTA SECTION (Retained smaller style) === */
+        .cta-section-services {
+            background: var(--color-red);
+            padding: 3rem 8%;
+            text-align: center;
+            border-top: 5px solid var(--color-yellow);
+        }
+
+        .cta-section-services h2 {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            color: var(--color-off-white);
+            text-transform: uppercase;
+            margin-bottom: 0.8rem;
+            letter-spacing: 3px;
+            text-shadow: 3px 3px 0 var(--color-black);
+        }
+
+        .cta-section-services p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            color: var(--color-off-white);
+        }
+        
+        .cta-btn {
+            background: var(--color-black);
+            color: var(--color-yellow);
+            border: 2px solid var(--color-yellow);
+            padding: 1rem 3rem;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 700;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
+        }
+
+        .cta-btn:hover {
+            background: var(--color-yellow);
+            color: var(--color-black);
+            box-shadow: 0 0 30px var(--color-yellow);
+            transform: translateY(-5px) scale(1.05);
+        }
+
+        /* --- Footer Styles Retained --- */
+        footer {
+            background: var(--color-dark-grey);
+            padding: 3rem 8%;
+            border-top: 3px solid var(--color-red);
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .social-icons a {
+            color: var(--color-off-white);
+            font-size: 1.8rem;
+            margin: 0 0.8rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .social-icons a:hover {
+            color: var(--color-yellow);
+            transform: translateY(-5px) scale(1.1);
+        }
+        
+        .social-icons a.fa-facebook-f:hover { color: #3b5998; }
+        .social-icons a.fa-twitter:hover { color: #1da1f2; }
+        .social-icons a.fa-linkedin-in:hover { color: #0e76a8; }
+        .social-icons a.fa-instagram:hover { color: #E1306C; }
+        .social-icons a.fa-envelope:hover { color: var(--color-red); }
+
+        .footer-text {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            /* ... (Navbar and general responsive styles retained) ... */
+            
+            .events-hero h1 {
+                font-size: 3rem;
+            }
+            
+            .events-hero {
+                padding: 8rem 5% 3rem;
+            }
+
+            .section-title-block {
+                font-size: 2rem;
+                padding: 0.3rem 1rem;
+                margin-bottom: 3rem;
+            }
+            
+            .events-grid-section {
+                padding: 4rem 5%;
+            }
+
+            .events-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">MARVEL RESOLUTIONS</div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="BB-BEE.html">B-BBEE Partnerships</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="events-hero">
+    <h1>JOIN THE GATHERING OF HEROES</h1>
+    <p>We host exclusive workshops, webinars, and networking events designed to arm you with the strategic knowledge needed to succeed in the market.</p>
+    <a href="#upcoming" class="cta-btn">VIEW UPCOMING EVENTS <i class="fas fa-calendar-alt" style="margin-left: 0.5rem;"></i></a>
+</section>
+
+<section id="upcoming" class="events-grid-section">
+    <span class="section-title-block">UPCOMING MISSIONS</span>
+    
+    <div class="events-grid">
+        
+        <div class="event-card">
+            <div class="event-date-banner">WEDNESDAY, DEC 15, 2025</div>
+            <div class="event-content">
+                <h3>B-BBEE Compliance Masterclass</h3>
+                <p>A deep dive into the latest codes and practical strategies for maximizing your scorecard points before the year-end deadline.</p>
+                <div class="event-details">
+                    <div><i class="fas fa-map-marker-alt"></i> Location: The Apex Tower, Johannesburg</div>
+                    <div><i class="fas fa-clock"></i> Time: 9:00 AM - 4:00 PM</div>
+                    <div><i class="fas fa-tag"></i> Price: R2,500 per seat</div>
+                </div>
+                <a href="register-bbbee.html" class="register-btn">REGISTER NOW</a>
+            </div>
+        </div>
+
+        <div class="event-card">
+            <div class="event-date-banner">FRIDAY, JAN 24, 2026</div>
+            <div class="event-content">
+                <h3>Digital Domination Workshop</h3>
+                <p>Learn how to cut through the digital noise with advanced SEO, paid media tactics, and content strategy for 2026.</p>
+                <div class="event-details">
+                    <div><i class="fas fa-map-marker-alt"></i> Location: Online Webinar</div>
+                    <div><i class="fas fa-clock"></i> Time: 1:00 PM - 2:30 PM (SAST)</div>
+                    <div><i class="fas fa-tag"></i> Price: FREE</div>
+                </div>
+                <a href="register-digital.html" class="register-btn">SECURE YOUR SPOT</a>
+            </div>
+        </div>
+
+        <div class="event-card">
+            <div class="event-date-banner">THURSDAY, FEB 12, 2026</div>
+            <div class="event-content">
+                <h3>Closing the Deal: Sales Strategy Summit</h3>
+                <p>Exclusive training for sales leaders on optimizing pipelines and securing high-value, long-term business partnerships.</p>
+                <div class="event-details">
+                    <div><i class="fas fa-map-marker-alt"></i> Location: The City View Hotel, Cape Town</div>
+                    <div><i class="fas fa-clock"></i> Time: 10:00 AM - 1:00 PM</div>
+                    <div><i class="fas fa-tag"></i> Price: R1,800 per seat</div>
+                </div>
+                <a href="register-sales.html" class="register-btn">ENROLL TODAY</a>
+            </div>
+        </div>
+        
+    </div>
+    
+    <span class="section-title-block" style="background-color: var(--color-dark-grey); color: var(--color-off-white);">ARCHIVED INTEL</span>
+    
+    <p style="margin-top: 2rem; color: #999;">Looking for materials from a past event? Contact us for access to archived training resources.</p>
+</section>
+
+
+<section class="events-hero">
+    <h2>CAN'T MAKE THESE DATES?</h2>
+    <p>We offer bespoke, in-house training programs tailored specifically for your team's needs. Turn your office into a training academy!</p>
+    <a href="contact.html" class="cta-btn">INQUIRE ABOUT CUSTOM TRAINING <i class="fas fa-arrow-right" style="margin-left: 0.5rem;"></i></a>
+</section>
+
+<footer>
+    <div class="footer-content">
+        <div class="social-icons">
+            <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+        <div class="footer-text">
+            &copy; 2025 MARVEL RESOLUTIONS. All rights reserved. | <a href="#" style="color: var(--color-red); text-decoration: none;">Privacy Policy</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

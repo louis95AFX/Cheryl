@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MARVEL RESOLUTIONS | B-BBEE Strategic Partnerships</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* --- NEW COLOR AND FONT VARIABLES --- */
+        :root {
+            --color-black: #000000;
+            --color-red: #a6171c; /* Main Accent Red */
+            --color-yellow: #dfb127; /* Secondary Accent Yellow */
+            --color-dark-grey: #1c1a1b;
+            --color-medium-blue: #1f4280; /* B-BBEE Accent Blue */
+            --color-green: #027953;
+            --color-off-white: #f7efdf;
+            --font-heading: 'Bebas Neue', cursive;
+            --font-body: 'Open Sans', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--color-black);
+            color: var(--color-off-white);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+        }
+
+        /* === NAVBAR (Retained) === */
+        header {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 1rem 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--color-red);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--color-yellow);
+            font-family: var(--font-heading);
+            letter-spacing: 5px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--color-off-white);
+            font-size: 1rem;
+            position: relative;
+            transition: 0.3s;
+            font-weight: 700;
+        }
+
+        nav ul li a::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-red);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--color-red);
+        }
+
+        nav ul li a:hover::after, nav ul li a.active::after {
+            width: 100%;
+        }
+
+        /* === B-BBEE HERO SECTION (Custom Blue/Red) === */
+        .bbbee-hero {
+            position: relative;
+            padding: 12rem 8% 4rem;
+            background: var(--color-dark-grey);
+            /* Blue Accent for B-BBEE */
+            border-bottom: 5px solid var(--color-medium-blue); 
+            text-align: center;
+            /* Blue/Black Gradient */
+            background: radial-gradient(circle at center, 
+                rgba(31, 66, 128, 0.5) 0%, /* Medium Blue center */
+                var(--color-black) 80% /* Fades to absolute black */
+            );
+            box-shadow: 0 0 50px rgba(31, 66, 128, 0.5) inset;
+        }
+
+        .bbbee-hero h1 {
+            font-family: var(--font-heading);
+            font-size: 4rem;
+            line-height: 1;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            color: var(--color-off-white);
+            letter-spacing: 4px;
+            /* Blue/Red/Black Shadow */
+            text-shadow: 4px 4px 0 var(--color-red), 8px 8px 0 var(--color-black); 
+        }
+
+        .bbbee-hero h2 {
+            font-family: var(--font-body);
+            font-size: 1.5rem;
+            color: var(--color-yellow);
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        .bbbee-hero p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            color: #ccc;
+        }
+
+        /* === PILLARS SECTION === */
+        .pillars-section {
+            padding: 6rem 8%;
+            background: var(--color-black);
+            text-align: center;
+        }
+        
+        .section-title-block {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            color: var(--color-off-white);
+            text-transform: uppercase;
+            background-color: var(--color-red);
+            display: inline-block;
+            padding: 0.5rem 2rem;
+            margin-bottom: 5rem;
+            border-radius: 5px;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+            border: 3px solid var(--color-yellow);
+        }
+
+        .pillar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .pillar-card {
+            background: var(--color-dark-grey);
+            padding: 2.5rem;
+            border-radius: 10px;
+            border-top: 5px solid var(--color-medium-blue);
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.7), 0 0 20px var(--color-yellow);
+        }
+
+        .pillar-card .icon-header {
+            color: var(--color-medium-blue);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .pillar-card h3 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--color-medium-blue);
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .pillar-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #ccc;
+        }
+
+        /* === CTA SECTION (Re-used Styles) === */
+        .cta-section-services {
+            background: var(--color-red);
+            padding: 3rem 8%;
+            text-align: center;
+            border-top: 5px solid var(--color-yellow);
+        }
+
+        .cta-section-services h2 {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            color: var(--color-off-white);
+            text-transform: uppercase;
+            margin-bottom: 0.8rem;
+            letter-spacing: 3px;
+            text-shadow: 3px 3px 0 var(--color-black);
+        }
+
+        .cta-section-services p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            color: var(--color-off-white);
+        }
+        
+        .cta-btn {
+            background: var(--color-black);
+            color: var(--color-yellow);
+            border: 2px solid var(--color-yellow);
+            padding: 1rem 3rem;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 700;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
+        }
+
+        .cta-btn:hover {
+            background: var(--color-yellow);
+            color: var(--color-black);
+            box-shadow: 0 0 30px var(--color-yellow);
+            transform: translateY(-5px) scale(1.05);
+        }
+
+        /* --- Footer Styles Retained --- */
+        footer {
+            background: var(--color-dark-grey);
+            padding: 3rem 8%;
+            border-top: 3px solid var(--color-red);
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .social-icons a {
+            color: var(--color-off-white);
+            font-size: 1.8rem;
+            margin: 0 0.8rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .social-icons a:hover {
+            color: var(--color-yellow);
+            transform: translateY(-5px) scale(1.1);
+        }
+        
+        .social-icons a.fa-facebook-f:hover { color: #3b5998; }
+        .social-icons a.fa-twitter:hover { color: #1da1f2; }
+        .social-icons a.fa-linkedin-in:hover { color: #0e76a8; }
+        .social-icons a.fa-instagram:hover { color: #E1306C; }
+        .social-icons a.fa-envelope:hover { color: var(--color-red); }
+
+        .footer-text {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        /* RESPONSIVE (Minimal adjustments for this page) */
+        @media (max-width: 900px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 1rem 5%;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+            
+            .bbbee-hero h1 {
+                font-size: 3rem;
+            }
+            
+            .bbbee-hero {
+                padding: 8rem 5% 3rem;
+            }
+
+            .section-title-block {
+                font-size: 2rem;
+                padding: 0.3rem 1rem;
+                margin-bottom: 3rem;
+            }
+            
+            .pillars-section {
+                padding: 4rem 5%;
+            }
+
+            .pillar-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">MARVEL RESOLUTIONS</div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="bbbee-hero">
+    <h1>B-BBEE STRATEGIC PARTNERSHIPS</h1>
+    <h2>FROM COMPLIANCE TO COMPETITIVE ADVANTAGE</h2>
+    <p>Transformation isn't just a requirement; it's a blueprint for **sustainable growth** and societal impact. We design and implement B-BBEE strategies that are fully compliant, practical to execute, and drive measurable value back into your business.</p>
+    <a href="#pillars" class="cta-btn">EXPLORE OUR STRATEGY <i class="fas fa-arrow-down" style="margin-left: 0.5rem;"></i></a>
+</section>
+
+<section id="pillars" class="pillars-section">
+    <span class="section-title-block">THE FIVE PILLARS OF POWER</span>
+    
+    <div class="pillar-grid">
+        
+        <div class="pillar-card">
+            <div class="icon-header"><i class="fas fa-hands-holding-child"></i></div>
+            <h3>OWNERSHIP</h3>
+            <p>We provide guidance on structuring equity deals and ownership transfers to meet scorecard targets while maintaining shareholder value and ensuring sustainable black economic participation.</p>
+        </div>
+
+        <div class="pillar-card">
+            <div class="icon-header"><i class="fas fa-user-tie"></i></div>
+            <h3>MANAGEMENT CONTROL</h3>
+            <p>Focusing on board representation and executive management, we help you implement effective succession planning and development programs to cultivate diverse leadership pipelines.</p>
+        </div>
+
+        <div class="pillar-card">
+            <div class="icon-header"><i class="fas fa-graduation-cap"></i></div>
+            <h3>SKILLS DEVELOPMENT</h3>
+            <p>Our programs maximize the impact of your training budget, focusing on learnerships, apprenticeships, and the crucial **Youth Employment Service (YES)** initiative to boost scorecard points and talent.</p>
+        </div>
+
+        <div class="pillar-card">
+            <div class="icon-header"><i class="fas fa-hand-holding-dollar"></i></div>
+            <h3>ESD</h3>
+            <p>We connect you with high-potential black-owned suppliers and partners, structuring development programs that strengthen your supply chain and deliver high-impact preferential procurement points.</p>
+        </div>
+
+        <div class="pillar-card">
+            <div class="icon-header"><i class="fas fa-heart"></i></div>
+            <h3>SOCIO-ECONOMIC DEVELOPMENT</h3>
+            <p>We move beyond simple donations, designing sustainable community initiatives that are aligned with your corporate mission, providing long-term upliftment and maximum B-BBEE impact.</p>
+        </div>
+        
+    </div>
+</section>
+
+<section class="bbbee-hero">
+    <h2>READY TO SECURE YOUR B-BBEE LEVEL?</h2>
+    <p>We offer full audits, strategic planning, and hands-on execution. Don't risk non-compliance or missed opportunities—let us chart your path to a powerful rating.</p>
+    <a href="contact.html" class="cta-btn">BOOK A STRATEGY SESSION <i class="fas fa-arrow-right" style="margin-left: 0.5rem;"></i></a>
+</section>
+
+<footer>
+    <div class="footer-content">
+        <div class="social-icons">
+            <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+        <div class="footer-text">
+            &copy; 2025 MARVEL RESOLUTIONS. All rights reserved. | <a href="#" style="color: var(--color-red); text-decoration: none;">Privacy Policy</a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
