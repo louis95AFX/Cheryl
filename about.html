@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | MARVEL HR SOLUTIONS: Be Heroic</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* --- NEW COLOR AND FONT VARIABLES --- */
+        :root {
+            --color-black: #000000;
+            --color-red: #a6171c; /* Main Accent Red */
+            --color-yellow: #dfb127; /* Secondary Accent Yellow */
+            --color-dark-grey: #1c1a1b;
+            --color-medium-blue: #1f4280;
+            --color-green: #027953;
+            --color-off-white: #f7efdf; /* Used for text/background contrast */
+            --font-heading: 'Bebas Neue', cursive;
+            --font-body: 'Open Sans', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--color-black);
+            color: var(--color-off-white);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+        }
+
+        /* === NAVBAR === (Kept consistent) */
+        header {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 1rem 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--color-red);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--color-yellow);
+            font-family: var(--font-heading);
+            letter-spacing: 5px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--color-off-white);
+            font-size: 1rem;
+            position: relative;
+            transition: 0.3s;
+            font-weight: 700;
+        }
+        
+        /* Highlight the 'About' link */
+        nav ul li a[href="#about"] {
+            color: var(--color-red); 
+        }
+
+        nav ul li a::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-red);
+            transition: width 0.3s ease;
+        }
+        
+        /* Persistent underline for active page */
+        nav ul li a[href="#about"]::after {
+            width: 100%;
+        }
+
+        nav ul li a:not([href="#about"]):hover {
+            color: var(--color-red);
+        }
+
+        nav ul li a:not([href="#about"]):hover::after {
+            width: 100%;
+        }
+
+
+        /* === GENERAL LAYOUT / UTILITY === */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 8%;
+        }
+        
+        .section-padding {
+            padding: 5rem 0;
+            position: relative;
+        }
+        
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            color: var(--color-off-white);
+            text-transform: uppercase;
+            background-color: var(--color-red);
+            display: inline-block;
+            padding: 0.5rem 2rem;
+            margin-bottom: 3rem;
+            border-radius: 5px;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+        }
+        
+        .text-yellow {
+            color: var(--color-yellow);
+            font-family: var(--font-heading);
+            text-shadow: 2px 2px 0 var(--color-red);
+        }
+        
+        /* === ABOUT HERO (Similar to home hero, but shorter) === */
+        .about-hero-section {
+            background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('hero_background.jpg'); /* Placeholder image */
+            background-size: cover;
+            background-position: center;
+            padding: 12rem 8% 6rem; /* Higher padding to clear fixed header */
+            text-align: center;
+            min-height: 50vh;
+        }
+        
+        .about-hero-section h1 {
+            font-family: var(--font-heading);
+            font-size: 5rem;
+            line-height: 1;
+            text-transform: uppercase;
+            color: var(--color-yellow);
+            text-shadow: 5px 5px 0 var(--color-red), 10px 10px 0 var(--color-dark-grey);
+            margin-bottom: 1rem;
+        }
+        
+        .about-hero-section p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--color-off-white);
+        }
+        
+        /* === VISION SECTION === */
+        .vision-section {
+            background: var(--color-dark-grey);
+            padding: 5rem 8%;
+            text-align: center;
+        }
+        
+        .vision-container {
+            display: flex;
+            gap: 4rem;
+            align-items: center;
+            text-align: left;
+        }
+        
+        .vision-text h2 {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            color: var(--color-red);
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 0 var(--color-yellow);
+        }
+        
+        .vision-text p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #ccc;
+            margin-bottom: 1.5rem;
+        }
+        
+        .vision-icon {
+            font-size: 6rem;
+            color: var(--color-yellow);
+            filter: drop-shadow(0 0 10px rgba(223, 177, 39, 0.7));
+            transition: transform 0.5s ease;
+        }
+        .vision-icon:hover {
+            transform: rotateY(15deg) scale(1.1);
+        }
+        
+        /* === MISSION & VALUES SECTION === */
+        .values-section {
+            background: var(--color-black);
+            padding: 5rem 8%;
+            text-align: center;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .value-card {
+            background: var(--color-dark-grey);
+            padding: 2rem;
+            border-radius: 10px;
+            border-top: 5px solid var(--color-red);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 15px var(--color-red);
+        }
+        
+        .value-card i {
+            font-size: 2.5rem;
+            color: var(--color-yellow);
+            margin-bottom: 1rem;
+        }
+        
+        .value-card h4 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--color-off-white);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+        
+        .value-card p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #ccc;
+        }
+
+        /* --- Footer and Newsletter styles are inherited --- */
+
+        /* === Responsive adjustments === */
+        @media (max-width: 900px) {
+            .about-hero-section h1 {
+                font-size: 3.5rem;
+            }
+            
+            .vision-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+            }
+            .vision-text {
+                order: 2;
+            }
+            .vision-icon {
+                order: 1;
+            }
+            
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        /* === VISION SECTION (UNCHANGED TEXT STYLES) === */
+        .vision-section {
+            background: var(--color-dark-grey);
+            padding: 5rem 8%;
+            text-align: center;
+        }
+        
+        .vision-container {
+            display: flex;
+            gap: 4rem;
+            align-items: center;
+            text-align: left;
+        }
+        
+        /* ... (vision-text and h2/p styles remain unchanged) ... */
+        
+        /* === VISION IMAGE CONTAINER STYLES (UPDATED) === */
+        
+        .vision-image-container {
+            /* Set a fixed size for the container on desktop */
+            width: 300px; 
+            min-width: 300px; /* Prevents text from shrinking this area too much */
+            height: 300px;
+            
+            display: flex; 
+            justify-content: center;
+            align-items: center;
+            
+            border-radius: 50%; /* Circular clipping mask */
+            overflow: hidden; 
+            
+            /* Apply the heroic glow effect */
+            box-shadow: 0 0 25px rgba(223, 177, 39, 0.7), inset 0 0 15px rgba(223, 177, 39, 0.5); 
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .vision-image-container:hover {
+            transform: scale(1.05) rotateZ(5deg); /* Subtle rotation and scale on hover */
+            box-shadow: 0 0 40px var(--color-yellow), inset 0 0 25px var(--color-yellow);
+        }
+
+        .vision-image {
+            /* Ensure the image covers the container without distortion */
+            width: 100%; 
+            height: 100%;
+            object-fit: cover; 
+            display: block; 
+            transition: transform 0.5s ease;
+        }
+        
+        .vision-image-container:hover .vision-image {
+            transform: scale(1.1); /* Subtle zoom effect on the image */
+        }
+
+
+        /* === Responsive adjustments for vision section image (UPDATED) === */
+        @media (max-width: 900px) {
+            /* ... (existing responsive rules) ... */
+            
+            .vision-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+            }
+            .vision-text {
+                order: 2;
+            }
+            
+            /* Scale down the container on smaller screens */
+            .vision-image-container {
+                order: 1; /* Puts the image above the text on mobile */
+                width: 250px; 
+                min-width: 250px;
+                height: 250px;
+                margin: 0 auto 1.5rem auto; /* Center the container and add spacing */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">MARVEL RESOLUTIONS</div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li> <li><a href="#">Services</a></li>
+            <li><a href="#">B-BBEE Partnerships</a></li>
+            <li><a href="#">Events</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section class="about-hero-section">
+        <h1>OUR ORIGIN STORY</h1>
+        <p>MARVEL RESOLUTIONS was founded on the belief that every business has the potential to be a force for good. We are the strategists, the partners, and the catalysts helping you unlock your next great chapter.</p>
+    </section>
+
+   <section id="vision" class="vision-section">
+        <div class="container vision-container">
+            <div class="vision-text">
+                <h2>Our Vision: Creating Super-Powered Businesses</h2>
+                <p>We envision a world where every company operates at its full heroic potential—achieving unprecedented growth while driving meaningful, sustainable impact. We move beyond simple HR or business consulting; we become the strategic backbone that empowers your brand to dominate its market and redefine success.</p>
+                <p>The mission is clear: to deliver data-driven solutions in digital engagement, market expansion, and strategic B-BBEE alignment that convert business goals into industry leadership.</p>
+            </div>
+            <div class="vision-image-container">
+                <img src="item1.jpg" alt="Vision Image" class="vision-image">
+            </div>
+        </div>
+    </section>
+
+    <section id="values" class="values-section section-padding">
+        <div class="container">
+            <h2 class="section-title">OUR HEROIC VALUES</h2>
+            <div class="values-grid">
+                
+                <div class="value-card">
+                    <i class="fas fa-bolt"></i>
+                    <h4>Speed & Agility</h4>
+                    <p>We operate with the rapid response of a superhero. We adapt to market shifts quickly, providing agile solutions that keep you ahead of the competition and prepared for any challenge.</p>
+                </div>
+                
+                <div class="value-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>Integrity & Trust</h4>
+                    <p>Like a hero's unbreakable shield, our commitment to transparency and ethical practice is absolute. We build partnerships based on mutual respect and unwavering honesty in every decision.</p>
+                </div>
+                
+                <div class="value-card">
+                    <i class="fas fa-lightbulb"></i>
+                    <h4>Innovation & Insight</h4>
+                    <p>We harness the power of superior intelligence. Our strategies are built on deep market insights and cutting-edge digital innovation, ensuring your growth path is always pioneering.</p>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+</main>
+
+
+
+<script>
+    // --- SCRIPTS FOR INTERACTIVITY (Removed Hero-specific code) ---
+
+    // Particle trail (Kept the original logic)
+    document.addEventListener('mousemove', function(e) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        particle.style.width = particle.style.height = Math.random() * 8 + 4 + 'px';
+        particle.style.left = e.pageX + 'px';
+        particle.style.top = e.pageY + 'px';
+        document.body.appendChild(particle);
+        setTimeout(() => particle.remove(), 1000);
+    });
+
+    // Cursor-based tilt for the approach cards (Kept for the final CTA card)
+    const approachCards = document.querySelectorAll('.approach-card');
+
+    approachCards.forEach(card => {
+        card.addEventListener('mousemove', function(e) {
+            const cardRect = this.getBoundingClientRect();
+            const cardCenterX = cardRect.left + cardRect.width / 2;
+            const cardCenterY = cardRect.top + cardRect.height / 2;
+
+            const xPos = (e.clientX - cardCenterX) / (cardRect.width / 2);
+            const yPos = (e.clientY - cardCenterY) / (cardRect.height / 2);
+
+            const xRotate = yPos * 10;
+            const yRotate = -xPos * 10;
+
+            this.style.transform = `perspective(1000px) rotateX(${xRotate}deg) rotateY(${yRotate}deg) scale(1.05)`;
+        });
+
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)`;
+        });
+    });
+
+    // Removed the Hero Image and Title shadow scripts as they are not on this page.
+</script>
+
+</body>
+</html>
