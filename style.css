@@ -1,0 +1,116 @@
+:root {
+    --color-red: #8b1016;
+    --color-yellow: #f5a623;
+    --color-dark: #222222;
+    --font-super: 'Bangers', cursive;
+    --font-body: 'Roboto', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden; /* Crucial for a full-screen 3D experience */
+    font-family: var(--font-body);
+}
+
+/* --- 3D Canvas Styling (Background) --- */
+#heroCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; 
+}
+
+/* --- 2D Content Overlay --- */
+.content-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10; /* Ensures content is above the 3D scene */
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    padding: 0 5%;
+}
+
+/* --- Header Styling --- */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.logo-area .logo {
+    height: 30px; /* Adjust size as needed */
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 30px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--color-yellow);
+}
+
+/* --- Hero Text Styling --- */
+.hero-text-section {
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    transform: translateY(-50%);
+    max-width: 600px;
+}
+
+.main-title {
+    font-family: var(--font-super);
+    font-size: 5rem;
+    line-height: 1;
+    color: white;
+    text-shadow: 4px 4px 0 var(--color-red), 6px 6px 0 var(--color-dark); /* Comic book shadow effect */
+}
+
+.sub-title {
+    font-family: var(--font-super);
+    font-size: 4.5rem;
+    line-height: 1;
+    color: var(--color-yellow);
+    margin-bottom: 20px;
+    text-shadow: 4px 4px 0 var(--color-red), 6px 6px 0 var(--color-dark);
+}
+
+.mission-text {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+.cta-button {
+    background-color: var(--color-red);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #a82025;
+    transform: translateY(-3px);
+}

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MARVEL HR SOLUTIONS: Be Heroic</title>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
         /* --- NEW COLOR AND FONT VARIABLES --- */
@@ -177,7 +178,7 @@
             }
         }
 
-        /* === MARVEL APPROACH SECTION (NEW) === */
+        /* === MARVEL APPROACH SECTION === */
         .marvel-approach-section {
             background: var(--color-black); /* Dark background */
             padding: 5rem 8%;
@@ -347,6 +348,119 @@
             50% { transform: translateY(-15px) rotateY(5deg) rotateX(-5deg); }
         }
 
+        /* === NEWSLETTER SECTION (NEW) === */
+        .newsletter-section {
+            background: var(--color-black);
+            padding: 4rem 8%;
+            text-align: center;
+            border-top: 1px solid var(--color-dark-grey);
+            border-bottom: 1px solid var(--color-dark-grey);
+        }
+
+        .newsletter-section h3 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            color: var(--color-yellow);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 0 var(--color-red);
+        }
+
+        .newsletter-section p {
+            font-size: 1rem;
+            color: var(--color-off-white);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .subscribe-form {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .subscribe-form input[type="email"] {
+            padding: 0.8rem 1.2rem;
+            border: 2px solid var(--color-red);
+            border-radius: 5px;
+            font-size: 1rem;
+            flex-grow: 1;
+            background: var(--color-dark-grey);
+            color: var(--color-off-white);
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .subscribe-form input[type="email"]:focus {
+            border-color: var(--color-yellow);
+            box-shadow: 0 0 10px rgba(223, 177, 39, 0.5);
+        }
+
+        .subscribe-form button {
+            /* Inheriting styles from .cta-btn for consistency */
+            background: var(--color-red);
+            color: var(--color-off-white);
+            border: 2px solid var(--color-red);
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 700;
+        }
+
+        .subscribe-form button:hover {
+            background: var(--color-yellow);
+            color: var(--color-black);
+            box-shadow: 0 0 15px var(--color-yellow);
+        }
+
+
+        /* === FOOTER STYLES === */
+        footer {
+            background: var(--color-dark-grey); /* Dark grey background */
+            padding: 3rem 8%;
+            border-top: 3px solid var(--color-red); /* Red accent line */
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .social-icons a {
+            color: var(--color-off-white);
+            font-size: 1.8rem;
+            margin: 0 0.8rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .social-icons a:hover {
+            color: var(--color-yellow);
+            transform: translateY(-5px) scale(1.1);
+        }
+        
+        /* Specific Icon Hover Colors for extra flair */
+        .social-icons a.fa-facebook-f:hover { color: #3b5998; }
+        .social-icons a.fa-twitter:hover { color: #1da1f2; }
+        .social-icons a.fa-linkedin-in:hover { color: #0e76a8; }
+        .social-icons a.fa-instagram:hover { color: #E1306C; }
+        .social-icons a.fa-envelope:hover { color: var(--color-red); } /* Highlight email with Red accent */
+
+        .footer-text {
+            color: #999; /* Lighter text for the copyright */
+            font-size: 0.9rem;
+        }
 
         /* RESPONSIVE */
         @media (max-width: 1200px) {
@@ -412,6 +526,25 @@
             .comic-bubble-right {
                 display: none; /* Hide bubbles on very small screens */
             }
+
+            .newsletter-section h3 {
+                font-size: 2rem;
+            }
+            .subscribe-form {
+                flex-direction: column;
+                max-width: 300px;
+            }
+            .subscribe-form input[type="email"], .subscribe-form button {
+                width: 100%;
+            }
+
+            footer {
+                padding: 2rem 5%;
+            }
+            .social-icons a {
+                margin: 0 0.5rem;
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -463,6 +596,28 @@
     </div>
 </section>
 
+<section class="newsletter-section">
+    <h3>Join Our League Of Heroes</h3>
+    <p>Subscribe to our newsletter for strategic insights, industry updates, and exclusive events. Don't miss out on the next big win!</p>
+    <form class="subscribe-form" onsubmit="alert('Thank you for subscribing!'); return false;">
+        <input type="email" placeholder="Enter your email address..." required aria-label="Enter your email address">
+        <button type="submit">Subscribe</button>
+    </form>
+</section>
+<footer>
+    <div class="footer-content">
+        <div class="social-icons">
+            <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+        <div class="footer-text">
+            &copy; 2025 MARVEL RESOLUTIONS. All rights reserved. | <a href="#" style="color: var(--color-red); text-decoration: none;">Privacy Policy</a>
+        </div>
+    </div>
+</footer>
+
 <script>
     const hero = document.querySelector('.hero-image');
     const title = document.querySelector('.hero-text h1');
@@ -490,7 +645,7 @@
         // Apply Comic Book Shadow Shift
         title.style.textShadow = 
             `${shadowX}px ${shadowY}px 0 var(--color-red), 
-             ${shadowX + 4}px ${shadowY + 4}px 0 var(--color-dark-grey)`;
+            ${shadowX + 4}px ${shadowY + 4}px 0 var(--color-dark-grey)`;
     });
 
     document.addEventListener('mouseleave', () => {
