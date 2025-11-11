@@ -40,64 +40,123 @@
         }
 
         /* === NAVBAR (Retained) === */
-        header {
-            width: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            position: fixed;
-            top: 0;
-            left: 0;
-            padding: 1rem 8%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            z-index: 10;
-            backdrop-filter: blur(10px);
-            border-bottom: 2px solid var(--color-red);
-        }
+      header {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 1rem 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Crucial for spreading logo, nav, and icons */
+    z-index: 10;
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid var(--color-red);
+}
 
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--color-yellow);
-            font-family: var(--font-heading);
-            letter-spacing: 5px;
-        }
+.logo {
+    /* Removed text styling */
+    line-height: 0; /* Important: Prevents extra space below the image */
+}
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-        }
+/* NEW: Style for the logo image */
+.logo-img {
+    height: 40px; /* Adjust this height as needed for your design */
+    width: auto;
+    display: block; /* Ensures the image behaves nicely within the flex container */
+    filter: drop-shadow(0 0 5px var(--color-yellow)); /* Optional: Keep the Marvel theme glow */
+}
+/* --- END LOGO STYLES --- */
 
-        nav ul li a {
-            text-decoration: none;
-            color: var(--color-off-white);
-            font-size: 1rem;
-            position: relative;
-            transition: 0.3s;
-            font-weight: 700;
-        }
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
 
-        nav ul li a::after {
-            content: "";
-            position: absolute;
-            width: 0;
-            height: 3px;
-            bottom: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--color-red);
-            transition: width 0.3s ease;
-        }
+nav ul li a {
+    text-decoration: none;
+    color: var(--color-off-white);
+    font-size: 1rem;
+    position: relative;
+    transition: 0.3s;
+    font-weight: 700;
+}
 
-        nav ul li a:hover, nav ul li a.active {
-            color: var(--color-red);
-        }
+nav ul li a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-red);
+    transition: width 0.3s ease;
+}
 
-        nav ul li a:hover::after, nav ul li a.active::after {
-            width: 100%;
-        }
-        
+nav ul li a:hover {
+    color: var(--color-red);
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+/* --- HEADER SOCIAL ICONS (NEW) --- */
+.header-social {
+    /* Styles for the social-icons block placed in the header */
+    display: flex; /* Ensure icons are side-by-side */
+    gap: 1rem;
+}
+
+.header-social a {
+    color: var(--color-off-white);
+    font-size: 1.4rem; /* Smaller size than footer icons */
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+}
+
+.header-social a:hover {
+    color: var(--color-red); /* Using the main accent color for hover in the header */
+    transform: translateY(-2px);
+}
+/* === END NAVBAR === */
+
+/* --- HERO SECTION --- */
+.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 100vh;
+    padding: 8rem 8% 4rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-text {
+    max-width: 550px;
+    z-index: 2;
+}
+
+.hero-text h1 {
+    font-family: var(--font-heading);
+    font-size: 5rem;
+    line-height: 1;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    text-shadow: 4px 4px 0 var(--color-red), 8px 8px 0 var(--color-dark-grey);
+    color: var(--color-yellow);
+    transition: text-shadow 0.2s ease;
+}
+
+.hero-text p {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    color: var(--color-off-white);
+    margin-bottom: 2rem;
+}
         /* === CONTACT HERO SECTION (Custom Green/Yellow) === */
         .contact-hero {
             position: relative;
@@ -313,16 +372,26 @@
 <body>
 
 <header>
-    <div class="logo">MARVEL RESOLUTIONS</div>
+    <div class="logo">
+        <a href="#"><img src="item5.png" alt="MARVEL RESOLUTIONS Logo" class="logo-img"></a>
+    </div>
+    
     <nav>
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="services.html">Services</a></li>
-            <li><a href="bbbee.html">B-BBEE Partnerships</a></li>
+            <li><a href="BB-BEE.html">B-BBEE Partnerships</a></li>
             <li><a href="events.html">Events</a></li>
         </ul>
     </nav>
+
+    <div class="social-icons header-social">
+        <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    </div>
 </header>
 
 <section class="contact-hero">

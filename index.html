@@ -4,554 +4,131 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MARVEL HR SOLUTIONS: Be Heroic</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    <style>
-        /* --- NEW COLOR AND FONT VARIABLES --- */
-        :root {
-            --color-black: #000000;
-            --color-red: #a6171c; /* Main Accent Red */
-            --color-yellow: #dfb127; /* Secondary Accent Yellow */
-            --color-dark-grey: #1c1a1b;
-            --color-medium-blue: #1f4280;
-            --color-green: #027953;
-            --color-off-white: #f7efdf; /* Used for text/background contrast */
-            --font-heading: 'Bebas Neue', cursive;
-            --font-body: 'Open Sans', sans-serif;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background: var(--color-black);
-            color: var(--color-off-white);
-            font-family: var(--font-body);
-            overflow-x: hidden; /* Prevent horizontal scroll from parallax */
-        }
-
-        /* === NAVBAR === */
-        header {
-            width: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            position: fixed;
-            top: 0;
-            left: 0;
-            padding: 1rem 8%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            z-index: 10;
-            backdrop-filter: blur(10px);
-            border-bottom: 2px solid var(--color-red);
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--color-yellow);
-            font-family: var(--font-heading);
-            letter-spacing: 5px;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: var(--color-off-white);
-            font-size: 1rem;
-            position: relative;
-            transition: 0.3s;
-            font-weight: 700;
-        }
-
-        nav ul li a::after {
-            content: "";
-            position: absolute;
-            width: 0;
-            height: 3px;
-            bottom: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--color-red);
-            transition: width 0.3s ease;
-        }
-
-        nav ul li a:hover {
-            color: var(--color-red);
-        }
-
-        nav ul li a:hover::after {
-            width: 100%;
-        }
-
-        /* --- HERO SECTION --- */
-        .hero-section {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            min-height: 100vh;
-            padding: 8rem 8% 4rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-text {
-            max-width: 550px;
-            z-index: 2;
-        }
-
-        .hero-text h1 {
-            font-family: var(--font-heading);
-            font-size: 5rem;
-            line-height: 1;
-            text-transform: uppercase;
-            margin-bottom: 1.5rem;
-            text-shadow: 4px 4px 0 var(--color-red), 8px 8px 0 var(--color-dark-grey);
-            color: var(--color-yellow);
-            transition: text-shadow 0.2s ease;
-        }
-
-        .hero-text p {
-            font-family: var(--font-body);
-            font-size: 1.1rem;
-            color: var(--color-off-white);
-            margin-bottom: 2rem;
-        }
-
-        .cta-btn {
-            background: var(--color-red);
-            color: var(--color-off-white);
-            border: 2px solid var(--color-red);
-            padding: 1rem 2.5rem;
-            font-size: 1rem;
-            border-radius: 5px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 700;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-        }
-
-        .cta-btn:hover {
-            background: var(--color-yellow);
-            color: var(--color-black);
-            box-shadow: 0 0 25px var(--color-yellow);
-            transform: translateY(-3px) scale(1.05);
-        }
-
-        /* HERO IMAGE */
-        .hero-image {
-            width: 450px;
-            filter: drop-shadow(0 0 40px var(--color-red)) drop-shadow(0 0 10px var(--color-yellow));
-            transform-style: preserve-3d;
-            transition: transform 0.1s ease-out;
-            animation: floatHero 3s ease-in-out infinite;
-        }
-
-        @keyframes floatHero {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        /* PARTICLES */
-        .particle {
-            position: absolute;
-            border-radius: 50%;
-            pointer-events: none;
-            background: radial-gradient(circle, var(--color-yellow), transparent);
-            animation: fadeOut 1s linear forwards;
-        }
-
-        @keyframes fadeOut {
-            to {
-                opacity: 0;
-                transform: scale(3);
-            }
-        }
-
-        /* === MARVEL APPROACH SECTION === */
-        .marvel-approach-section {
-            background: var(--color-black); /* Dark background */
-            padding: 5rem 8%;
-            text-align: center;
-            position: relative; /* For comic bubbles */
-            z-index: 5; /* Ensure it sits above anything potentially behind it */
-        }
-
-        .marvel-approach-section h2 {
-            font-family: var(--font-heading);
-            font-size: 3.5rem;
-            color: var(--color-off-white);
-            text-transform: uppercase;
-            background-color: var(--color-red); /* Red background for title block */
-            display: inline-block;
-            padding: 0.5rem 2rem;
-            margin-bottom: 4rem;
-            border-radius: 5px;
-            letter-spacing: 2px;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
-        }
-
-        .approach-cards {
-            display: flex;
-            justify-content: center;
-            gap: 2rem; /* Space between cards */
-            flex-wrap: wrap; /* Allow cards to wrap on smaller screens */
-        }
-
-        .approach-card {
-            background: var(--color-dark-grey); /* Default card background */
-            padding: 2.5rem 2rem;
-            border-radius: 10px;
-            width: 350px; /* Fixed width for consistency */
-            text-align: left;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative; /* For tilt effect */
-            transform-style: preserve-3d; /* For the 3D tilt */
-        }
-
-        .approach-card:hover {
-            transform: translateY(-15px) rotateX(5deg) rotateY(5deg) scale(1.03);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.7), 0 0 30px rgba(var(--card-hover-rgb), 0.7);
-        }
-
-        .approach-card h3 {
-            font-family: var(--font-heading);
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: inherit; /* Inherit color from specific card styles below */
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
-        }
-
-        .approach-card p {
-            font-family: var(--font-body);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            color: #ccc; /* Lighter text for readability */
-        }
-
-        .approach-card .learn-more-btn {
-            background: var(--color-dark-grey); /* Default button background */
-            color: var(--color-off-white);
-            border: none;
-            padding: 0.7rem 1.5rem;
-            font-size: 0.9rem;
-            border-radius: 5px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 700;
-            margin-top: 1.5rem;
-            box-shadow: inset 0 0 0 2px; /* Subtle border on hover */
-        }
-
-        .approach-card .learn-more-btn:hover {
-            transform: translateY(-2px);
-            background: var(--color-red); /* Generic hover effect for buttons */
-            box-shadow: 0 0 15px var(--color-red);
-            color: var(--color-off-white);
-        }
-
-        /* Specific Card Colors */
-        .digital-marketing {
-            background: var(--color-yellow);
-            color: var(--color-black); /* Text on yellow background */
-            --card-hover-rgb: 223, 177, 39; /* RGB for yellow */
-        }
-        .digital-marketing h3 { color: var(--color-black); } /* Ensure heading is black */
-        .digital-marketing p { color: #555; } /* Darker text for readability */
-        .digital-marketing .learn-more-btn {
-            background: var(--color-black);
-            color: var(--color-yellow);
-            box-shadow: inset 0 0 0 2px var(--color-yellow);
-        }
-        .digital-marketing .learn-more-btn:hover {
-            background: var(--color-red);
-            color: var(--color-off-white);
-        }
-
-
-        .business-development {
-            background: var(--color-green);
-            color: var(--color-off-white);
-            --card-hover-rgb: 2, 121, 83; /* RGB for green */
-        }
-        .business-development h3 { color: var(--color-off-white); }
-        .business-development .learn-more-btn {
-            background: var(--color-dark-grey);
-            color: var(--color-green);
-            box-shadow: inset 0 0 0 2px var(--color-green);
-        }
-        .business-development .learn-more-btn:hover {
-            background: var(--color-red);
-            color: var(--color-off-white);
-        }
-
-        .bbbee-partnerships {
-            background: var(--color-medium-blue);
-            color: var(--color-off-white);
-            --card-hover-rgb: 31, 66, 128; /* RGB for blue */
-        }
-        .bbbee-partnerships h3 { color: var(--color-off-white); }
-        .bbbee-partnerships .learn-more-btn {
-            background: var(--color-dark-grey);
-            color: var(--color-medium-blue);
-            box-shadow: inset 0 0 0 2px var(--color-medium-blue);
-        }
-        .bbbee-partnerships .learn-more-btn:hover {
-            background: var(--color-red);
-            color: var(--color-off-white);
-        }
-
-        /* Comic Bubbles (Stylized and positioned) */
-        .comic-bubble-left,
-        .comic-bubble-right {
-            position: absolute;
-            opacity: 0.3; /* Subtle */
-            pointer-events: none;
-            transform-style: preserve-3d;
-            animation: bubbleFloat 10s ease-in-out infinite;
-        }
-
-        .comic-bubble-left {
-            width: 200px;
-            height: 150px;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150"><path fill="%23f7efdf" d="M100,10 C140,0 190,30 190,70 C190,110 160,140 100,140 C40,140 10,110 10,70 C10,30 60,0 100,10 Z M12,85 C10,95 0,110 0,110 C0,110 10,120 15,115 L12,85 Z"/></svg>') no-repeat center center / contain;
-            top: 10%;
-            left: 5%;
-            transform: rotateZ(-15deg);
-        }
-
-        .comic-bubble-right {
-            width: 180px;
-            height: 120px;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 120"><path fill="%23f7efdf" d="M90,5 C120,-5 170,20 170,60 C170,100 130,120 90,120 C50,120 10,100 10,60 C10,20 60,-5 90,5 Z M160,70 C170,75 180,80 180,80 C180,80 170,85 165,80 L160,70 Z"/></svg>') no-repeat center center / contain;
-            top: 20%;
-            right: 8%;
-            transform: rotateZ(10deg);
-        }
-
-        @keyframes bubbleFloat {
-            0%, 100% { transform: translateY(0) rotateY(0deg) rotateX(0deg); }
-            50% { transform: translateY(-15px) rotateY(5deg) rotateX(-5deg); }
-        }
-
-        /* === NEWSLETTER SECTION (NEW) === */
-        .newsletter-section {
-            background: var(--color-black);
-            padding: 4rem 8%;
-            text-align: center;
-            border-top: 1px solid var(--color-dark-grey);
-            border-bottom: 1px solid var(--color-dark-grey);
-        }
-
-        .newsletter-section h3 {
-            font-family: var(--font-heading);
-            font-size: 2.5rem;
-            color: var(--color-yellow);
-            text-transform: uppercase;
-            margin-bottom: 0.5rem;
-            letter-spacing: 2px;
-            text-shadow: 2px 2px 0 var(--color-red);
-        }
-
-        .newsletter-section p {
-            font-size: 1rem;
-            color: var(--color-off-white);
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .subscribe-form {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .subscribe-form input[type="email"] {
-            padding: 0.8rem 1.2rem;
-            border: 2px solid var(--color-red);
-            border-radius: 5px;
-            font-size: 1rem;
-            flex-grow: 1;
-            background: var(--color-dark-grey);
-            color: var(--color-off-white);
-            outline: none;
-            transition: border-color 0.3s ease;
-        }
-
-        .subscribe-form input[type="email"]:focus {
-            border-color: var(--color-yellow);
-            box-shadow: 0 0 10px rgba(223, 177, 39, 0.5);
-        }
-
-        .subscribe-form button {
-            /* Inheriting styles from .cta-btn for consistency */
-            background: var(--color-red);
-            color: var(--color-off-white);
-            border: 2px solid var(--color-red);
-            padding: 0.8rem 1.5rem;
-            font-size: 1rem;
-            border-radius: 5px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 700;
-        }
-
-        .subscribe-form button:hover {
-            background: var(--color-yellow);
-            color: var(--color-black);
-            box-shadow: 0 0 15px var(--color-yellow);
-        }
-
-
-        /* === FOOTER STYLES === */
-        footer {
-            background: var(--color-dark-grey); /* Dark grey background */
-            padding: 3rem 8%;
-            border-top: 3px solid var(--color-red); /* Red accent line */
-            text-align: center;
-        }
-
-        .footer-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .social-icons a {
-            color: var(--color-off-white);
-            font-size: 1.8rem;
-            margin: 0 0.8rem;
-            transition: color 0.3s ease, transform 0.3s ease;
-            display: inline-block;
-        }
-
-        .social-icons a:hover {
-            color: var(--color-yellow);
-            transform: translateY(-5px) scale(1.1);
-        }
-        
-        /* Specific Icon Hover Colors for extra flair */
-        .social-icons a.fa-facebook-f:hover { color: #3b5998; }
-        .social-icons a.fa-twitter:hover { color: #1da1f2; }
-        .social-icons a.fa-linkedin-in:hover { color: #0e76a8; }
-        .social-icons a.fa-instagram:hover { color: #E1306C; }
-        .social-icons a.fa-envelope:hover { color: var(--color-red); } /* Highlight email with Red accent */
-
-        .footer-text {
-            color: #999; /* Lighter text for the copyright */
-            font-size: 0.9rem;
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 1200px) {
-            .approach-cards {
-                gap: 1.5rem;
-            }
-            .approach-card {
-                width: 300px;
-                padding: 2rem 1.5rem;
-            }
-            .approach-card h3 {
-                font-size: 1.6rem;
-            }
-            .approach-card p {
-                font-size: 0.9rem;
-            }
-        }
-
-        @media (max-width: 900px) {
-            header {
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 1rem 5%;
-            }
-
-            nav ul {
-                flex-wrap: wrap;
-                gap: 1rem;
-            }
-
-            .hero-section {
-                flex-direction: column;
-                text-align: center;
-                padding: 10rem 5% 4rem;
-            }
-
-            .hero-text h1 {
-                font-size: 3rem;
-            }
-
-            .hero-image {
-                width: 300px;
-                margin-top: 2rem;
-            }
-
-            .marvel-approach-section h2 {
-                font-size: 2.5rem;
-                margin-bottom: 3rem;
-                padding: 0.4rem 1.5rem;
-            }
-
-            .approach-cards {
-                flex-direction: column; /* Stack cards vertically */
-                align-items: center; /* Center stacked cards */
-                gap: 2rem;
-            }
-            .approach-card {
-                width: 90%; /* Take more width on small screens */
-                max-width: 400px; /* Limit max width */
-            }
-
-            .comic-bubble-left,
-            .comic-bubble-right {
-                display: none; /* Hide bubbles on very small screens */
-            }
-
-            .newsletter-section h3 {
-                font-size: 2rem;
-            }
-            .subscribe-form {
-                flex-direction: column;
-                max-width: 300px;
-            }
-            .subscribe-form input[type="email"], .subscribe-form button {
-                width: 100%;
-            }
-
-            footer {
-                padding: 2rem 5%;
-            }
-            .social-icons a {
-                margin: 0 0.5rem;
-                font-size: 1.5rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
 
+<div class="modal-overlay" id="readMoreModal">
+    <div class="modal-content">
+        <button class="modal-close-btn" id="closeModalBtn">&times;</button>
+        <h3 id="modal-title">Service Title</h3>
+        <div id="modal-text">This is the full, detailed description for the service.</div>
+        <p class="modal-cta-footer">Want to know more? Contact us today to discuss how we can help your business become truly heroic!</p>
+        <button class="cta-btn" id="modalCtaClose">Close</button>
+    </div>
+</div>
+
+<template id="digital-marketing-content">
+    <p>In the ever-evolving digital landscape, standing out requires more than just a presence—it demands a strategic approach that captivates, converts, and cultivates lasting relationships with your audience.</p>
+    
+    <div class="modal-divider"></div>
+
+    <div class="modal-feature-grid">
+
+        <div class="feature-item">
+            <i class="fas fa-pencil-alt icon-red"></i>
+            <h4>Content Creation & Writing</h4>
+            <ul>
+                <li>📝 Craft blog posts, website copy, and email campaigns.</li>
+                <li>Build authority and drive **organic traffic**.</li>
+                <li>Convert readers into loyal customers.</li>
+            </ul>
+        </div>
+
+        <div class="feature-item">
+            <i class="fas fa-mobile-alt icon-yellow"></i>
+            <h4>Social Media Management</h4>
+            <ul>
+                <li>📱 Build and nurture communities across all platforms.</li>
+                <li>Consistent, on-business content that sparks engagement.</li>
+                <li>Focus on running your business while we **amplify your voice**.</li>
+            </ul>
+        </div>
+
+        <div class="feature-item">
+            <i class="fas fa-bullseye icon-blue"></i>
+            <h4>Media Buying</h4>
+            <ul>
+                <li>🎯 **Precision-targeted campaigns** for maximum ROI.</li>
+                <li>Ads across Google, Meta, LinkedIn, and more.</li>
+                <li>Data-driven strategies with **real-time performance insights**.</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="modal-divider"></div>
+
+    <h4>What Sets Us Apart: Our Digital Edge</h4>
+    <div class="modal-key-points">
+        <p><i class="fas fa-cogs"></i> <strong>Strategic Integration:</strong> Unified content, social, and media strategies.</p>
+        <p><i class="fas fa-chart-line"></i> <strong>Performance-Focused:</strong> Measurable KPIs for every campaign.</p>
+        <p><i class="fas fa-comment-dots"></i> <strong>Authentic Storytelling:</strong> Real narratives, not just promotions.</p>
+        <p><i class="fas fa-search-dollar"></i> <strong>Transparent Reporting:</strong> Regular analytics updates and insights.</p>
+    </div>
+</template>
+
+<template id="business-development-content">
+    <p>Sustainable business growth requires more than opportunity—it demands a systematic approach to identifying, engaging, and converting the right prospects into long-term partnerships.</p>
+    
+    <div class="modal-divider"></div>
+
+    <div class="modal-feature-grid">
+
+        <div class="feature-item" style="border-left: 5px solid var(--color-green);">
+            <i class="fas fa-funnel-dollar icon-green"></i>
+            <h4>Lead Generation & Nurturing</h4>
+            <ul>
+                <li>We build pipelines filled with **qualified prospects** matching your profile.</li>
+                <li>Multi-channel strategies combining digital research and targeted outreach.</li>
+                <li>Nurturing campaigns keep prospects engaged through the buyer's journey.</li>
+            </ul>
+        </div>
+
+        <div class="feature-item" style="border-left: 5px solid var(--color-green);">
+            <i class="fas fa-envelope-open-text icon-green"></i>
+            <h4>Outbound Email Outreach</h4>
+            <ul>
+                <li>Personalized, value-driven messaging that **cuts through inbox noise**.</li>
+                <li>A/B testing, follow-up management, and detailed metric tracking.</li>
+                <li>Turning cold outreach into **warm conversations** that book meetings.</li>
+            </ul>
+        </div>
+
+        <div class="feature-item" style="border-left: 5px solid var(--color-green);">
+            <i class="fas fa-phone-alt icon-green"></i>
+            <h4>Strategic Phone Calling</h4>
+            <ul>
+                <li>Securing meetings with **C-suite executives** and key stakeholders.</li>
+                <li>Professional qualification and **objection management**.</li>
+                <li>Delivering confirmed meetings with prospects ready to discuss solutions.</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="modal-divider"></div>
+
+    <h4>What Sets Us Apart: Our Growth Engine Edge</h4>
+    <div class="modal-key-points">
+        <p><i class="fas fa-check-circle icon-green"></i> <strong>Qualified Pipeline:</strong> Focus on quality over quantity, targeting ideal profiles.</p>
+        <p><i class="fas fa-share-alt"></i> <strong>Multichannel Approach:</strong> Email, phone, and LinkedIn work in concert.</p>
+        <p><i class="fas fa-database"></i> <strong>CRM Integration:</strong> Seamless tracking and reporting within your existing systems.</p>
+        <p><i class="fas fa-trophy"></i> <strong>Results-Driven:</strong> Success measured by meetings, opportunities, and revenue.</p>
+    </div>
+</template>
+
+
 <header>
-    <div class="logo">MARVEL RESOLUTIONS</div>
+    <div class="logo">
+        <a href="#"><img src="item5.png" alt="MARVEL RESOLUTIONS Logo" class="logo-img"></a>
+    </div>
+    
     <nav>
         <ul>
             <li><a href="about.html">About</a></li>
@@ -561,13 +138,20 @@
             <li><a href="contact.html">Contact</a></li>
         </ul>
     </nav>
+
+    <div class="social-icons header-social">
+        <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    </div>
 </header>
 
 <section class="hero-section">
     <div class="hero-text">
-        <h1>Every Brand Has The Power<br>To Be Heroic</h1>
+        <h1>Every business Has The Power<br>To Be Heroic</h1>
         <p>We help businesses grow through digital marketing, business development, and partnerships that drive real impact.</p>
-        <button class="cta-btn">Unleash Your Brand</button>
+        <button class="cta-btn">Unleash Your Business</button>
     </div>
 
     <img src="wind.png" alt="Superhero" class="hero-image">
@@ -578,20 +162,20 @@
     <div class="comic-bubble-right"></div>
     <h2>THE MARVEL APPROACH</h2>
     <div class="approach-cards">
-        <div class="approach-card digital-marketing">
+        <div class="approach-card digital-marketing" data-title="DIGITAL MARKETING" data-fulltext="In today's digital battlefield, your business needs more than visibility—it needs a voice that resonates and a strategy that conquers. We transform your online presence through compelling content creation, strategic social media management, and precision media buying that delivers real ROI. Every hero needs their origin story – let us help you tell yours.">
             <h3>DIGITAL MARKETING</h3>
-            <p>We help brands amplify their voice, attract their ideal audience, and convert engagement into revenue. From content strategy and SEO to social media campaigns, email marketing, and paid advertising — we design data-driven, results-focused digital journeys that grow awareness, generate leads, and build your brand's credibility.</p>
-            <button class="learn-more-btn">LEARN MORE</button>
+            <p class="short-description">In today's digital battlefield, your business needs more than visibility—it needs a voice that resonates and a strategy that conquers. We transform your online presence through compelling content creation, strategic social media management, and precision media buying that delivers real ROI. Every hero needs their origin story – let us help you tell yours.</p>
+            <button class="learn-more-btn">READ MORE</button>
         </div>
-        <div class="approach-card business-development">
+        <div class="approach-card business-development" data-title="BUSINESS DEVELOPMENT" data-fulltext="We partner with you to unlock new growth pathways and elevate your market presence. Through bespoke, in-depth market research, aggressive opportunity mapping, strategic outreach and negotiation, and continuous pipeline optimization, we help you secure high-value clients, successfully enter challenging new markets, and achieve sustainable, long-term scaling. We don't just pursue opportunities — we create them and ensure you capitalize on them.">
             <h3>BUSINESS DEVELOPMENT</h3>
-            <p>We partner with you to unlock new growth pathways. Through bespoke market research, opportunity mapping, strategic outreach, and pipeline optimization, we help you win clients, enter new markets, and scale sustainably. We don't just pursue opportunities — we create them.</p>
-            <button class="learn-more-btn">LEARN MORE</button>
+            <p class="short-description">We partner with you to unlock new growth pathways. Through bespoke market research, opportunity mapping, strategic outreach, and pipeline optimization, we help you win clients, enter new markets, and scale sustainably. We don't just pursue opportunities — we create them.</p>
+            <button class="learn-more-btn">READ MORE</button>
         </div>
-        <div class="approach-card bbbee-partnerships">
+        <div class="approach-card bbbee-partnerships" data-title="B-BBEE STRATEGIC PARTNERSHIPS" data-fulltext="We help corporates turn compliance into true societal impact and business advantage. With specialist expertise in the B-BBEE Codes of Good Practice, including robust Skills Development, effective Enterprise & Supplier Development (ESD), strategic Socio-Economic Development (SED), and impactful Youth Employment Service (YES) programs, we design transformation strategies that are fully compliant, practical to implement, and directly aligned with your overall business goals and values.">
             <h3>B-BBEE STRATEGIC<br>PARTNERSHIPS</h3>
-            <p>We help corporates turn compliance into impact. With expertise in Skills Development, Enterprise & Supplier Development, Socio-Economic Development, and the YES program, we design transformation strategies that are compliant, practical, and aligned with your business goals.</p>
-            <button class="learn-more-btn">LEARN MORE</button>
+            <p class="short-description">We help corporates turn compliance into impact. With expertise in Skills Development, Enterprise & Supplier Development, Socio-Economic Development, and the YES program, we design transformation strategies that are compliant, practical, and aligned with your business goals.</p>
+            <button class="learn-more-btn">READ MORE</button>
         </div>
     </div>
 </section>
@@ -604,121 +188,7 @@
         <button type="submit">Subscribe</button>
     </form>
 </section>
-<footer>
-    <div class="footer-content">
-        <div class="social-icons">
-            <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        </div>
-        <div class="footer-text">
-            &copy; 2025 MARVEL RESOLUTIONS. All rights reserved. | <a href="#" style="color: var(--color-red); text-decoration: none;">Privacy Policy</a>
-        </div>
-    </div>
-</footer>
 
-<script>
-    const hero = document.querySelector('.hero-image');
-    const title = document.querySelector('.hero-text h1');
-    const heroSection = document.querySelector('.hero-section');
-    
-    // Use the container's size for better centering
-    let containerRect = heroSection.getBoundingClientRect();
-
-    document.addEventListener('mousemove', (e) => {
-        // Calculate offset relative to the hero section container
-        const centerX = containerRect.left + containerRect.width / 2;
-        const centerY = containerRect.top + containerRect.height / 2;
-
-        // Calculate rotation based on cursor deviation from center
-        const xRotate = (e.clientY - centerY) / 40; // Tilt X based on vertical movement
-        const yRotate = (e.clientX - centerX) / 40; // Tilt Y based on horizontal movement
-        
-        // Tilt the hero image (subtler effect)
-        hero.style.transform = `rotateX(${xRotate}deg) rotateY(${-yRotate}deg) scale(1.02)`;
-        
-        // Shift the title shadow (stronger effect)
-        const shadowX = (e.clientX - centerX) / 20;
-        const shadowY = (e.clientY - centerY) / 20;
-        
-        // Apply Comic Book Shadow Shift
-        title.style.textShadow = 
-            `${shadowX}px ${shadowY}px 0 var(--color-red), 
-            ${shadowX + 4}px ${shadowY + 4}px 0 var(--color-dark-grey)`;
-    });
-
-    document.addEventListener('mouseleave', () => {
-        hero.style.transform = `rotateX(0deg) rotateY(0deg) scale(1)`;
-        // Restore initial title shadow
-        title.style.textShadow = `4px 4px 0 var(--color-red), 8px 8px 0 var(--color-dark-grey)`;
-    });
-
-    // Recalculate container size on resize to maintain accurate parallax center
-    window.addEventListener('resize', () => {
-        containerRect = heroSection.getBoundingClientRect();
-    });
-
-    // Particle trail (Kept the original logic, updated color in CSS)
-    document.addEventListener('mousemove', function(e) {
-        const particle = document.createElement('div');
-        particle.classList.add('particle');
-        particle.style.width = particle.style.height = Math.random() * 8 + 4 + 'px';
-        particle.style.left = e.pageX + 'px';
-        particle.style.top = e.pageY + 'px';
-        document.body.appendChild(particle);
-        setTimeout(() => particle.remove(), 1000);
-    });
-
-    // New: Cursor-based tilt for the approach cards
-    const approachCards = document.querySelectorAll('.approach-card');
-
-    approachCards.forEach(card => {
-        card.addEventListener('mousemove', function(e) {
-            const cardRect = this.getBoundingClientRect();
-            const cardCenterX = cardRect.left + cardRect.width / 2;
-            const cardCenterY = cardRect.top + cardRect.height / 2;
-
-            const xPos = (e.clientX - cardCenterX) / (cardRect.width / 2); // -1 to 1 range
-            const yPos = (e.clientY - cardCenterY) / (cardRect.height / 2); // -1 to 1 range
-
-            const xRotate = yPos * 10; // More tilt for Y-axis
-            const yRotate = -xPos * 10; // More tilt for X-axis
-
-            this.style.transform = `perspective(1000px) rotateX(${xRotate}deg) rotateY(${yRotate}deg) scale(1.05)`;
-        });
-
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)`;
-        });
-    });
-
-    // New: Cursor-based tilt for the comic bubbles in the approach section
-    const comicBubbleLeft = document.querySelector('.comic-bubble-left');
-    const comicBubbleRight = document.querySelector('.comic-bubble-right');
-    const approachSection = document.querySelector('.marvel-approach-section');
-
-    approachSection.addEventListener('mousemove', (e) => {
-        const sectionRect = approachSection.getBoundingClientRect();
-        const sectionCenterX = sectionRect.left + sectionRect.width / 2;
-        const sectionCenterY = sectionRect.top + sectionRect.height / 2;
-
-        const xMove = (e.clientX - sectionCenterX) / 100; // Affect position
-        const yMove = (e.clientY - sectionCenterY) / 100;
-
-        const xRotate = (e.clientY - sectionCenterY) / 200; // Affect rotation
-        const yRotate = (e.clientX - sectionCenterX) / 200;
-
-        comicBubbleLeft.style.transform = `translate(${xMove * 0.5}px, ${yMove * 0.5}px) rotateX(${-xRotate}deg) rotateY(${yRotate}deg) rotateZ(-15deg) `;
-        comicBubbleRight.style.transform = `translate(${-xMove * 0.5}px, ${-yMove * 0.5}px) rotateX(${xRotate}deg) rotateY(${-yRotate}deg) rotateZ(10deg)`;
-    });
-
-    approachSection.addEventListener('mouseleave', () => {
-        comicBubbleLeft.style.transform = `translate(0,0) rotateX(0deg) rotateY(0deg) rotateZ(-15deg)`;
-        comicBubbleRight.style.transform = `translate(0,0) rotateX(0deg) rotateY(0deg) rotateZ(10deg)`;
-    });
-
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
