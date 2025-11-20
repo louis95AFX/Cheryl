@@ -10,258 +10,234 @@
     <link rel="stylesheet" href="style.css"> 
 
     <style>
-        /* --- DESIGN SYSTEM VARIABLES --- */
-        :root {
-            /* Fonts */
-            --font-heading: 'Bebas Neue', sans-serif;
-            --font-text: 'Open Sans', sans-serif;
+    /* --- DESIGN SYSTEM VARIABLES --- */
+    :root {
+        --font-heading: 'Bebas Neue', sans-serif;
+        --font-text: 'Open Sans', sans-serif;
 
-            /* Colors */
-            --color-black: #000000;
-            --color-primary-yellow: #dfb127; /* Main Accent */
-            --color-accent-red: #a6171c; /* Secondary Accent/CTA */
-            --color-dark-gray: #1c1a1b; /* Header/Footer Background */
-            --color-primary-blue: #1f4280; /* Heading Color */
-            --color-success-green: #027953;
-            --color-light-cream: #f7efdf; /* Main Background & Light Text */
-            
-            /* Fallback variables for the user's inline styles */
-            --color-red: var(--color-accent-red);
-            --color-light-grey: var(--color-light-cream); 
-        }
+        --color-black: #000000;
+        --color-primary-yellow: #dfb127;
+        --color-accent-red: #a6171c;
+        --color-dark-gray: #1c1a1b;
+        --color-primary-blue: #1f4280;
+        --color-success-green: #027953;
+        --color-light-cream: #f7efdf;
+    }
 
-        /* --- BASE STYLES --- */
-        body {
-    margin: 0;
-    padding: 0;
-    font-family: var(--font-text);
-    color: var(--color-dark-gray);
-    /* 💥 UPDATED: New background color */
-    background-color: #1C5297; 
-    line-height: 1.6;
-}
+    /* --- BASE --- */
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: var(--font-text);
+        background-color: #1C5297;
+        color: var(--color-dark-gray);
+        line-height: 1.6;
+        overflow-x: hidden; /* Prevents horizontal scroll */
+    }
 
+    h1, h2, h3, h4 {
+        font-family: var(--font-heading);
+        color: var(--color-primary-blue);
+        text-transform: uppercase;
+    }
 
-        h1, h2, h3, h4 {
-            font-family: var(--font-heading);
-            color: var(--color-primary-blue);
-            margin-top: 0.5em;
-            margin-bottom: 0.3em;
-            text-transform: uppercase;
-        }
-        
-        /* --- HEADER & NAV --- */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 5%;
-            background-color: var(--color-dark-gray); /* Dark background */
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-        }
+    /* --- HEADER --- */
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 5%;
+        background-color: var(--color-dark-gray);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
 
-        .logo-img {
-            height: 50px; 
-        }
+    nav ul {
+        display: flex;
+        gap: 10px;
+    }
 
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-        }
+    nav ul li a {
+        color: var(--color-light-cream);
+        text-decoration: none;
+        padding: 10px 15px;
+        font-family: var(--font-heading);
+        letter-spacing: 1px;
+    }
 
-        nav ul li a {
-            text-decoration: none;
-            color: var(--color-light-cream); /* Light text on dark background */
-            padding: 10px 15px;
-            display: block;
-            font-weight: 400;
-            transition: color 0.3s;
-            font-family: var(--font-heading);
-            letter-spacing: 1px;
-        }
-        
-        nav ul li a:hover {
-            color: var(--color-primary-yellow); /* Yellow hover effect */
-        }
+    nav ul li a:hover {
+        color: var(--color-primary-yellow);
+    }
 
-        .social-icons a {
-            color: var(--color-primary-yellow); /* Yellow icons */
-            margin-left: 15px;
-            font-size: 1.2em;
-            transition: color 0.3s;
-        }
-        .social-icons a:hover {
-            color: var(--color-accent-red);
-        }
+    .social-icons a {
+        color: var(--color-primary-yellow);
+        margin-left: 15px;
+    }
 
-        /* --- CTA BUTTON (General Style) --- */
-        .cta-btn {
-            display: inline-block;
-            background-color: var(--color-accent-red);
-            color: var(--color-light-cream);
-            padding: 15px 30px;
-            text-decoration: none;
-            border: none;
-            border-radius: 5px;
-            font-weight: bold;
-            font-family: var(--font-heading);
-            font-size: 1.2em;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.1s;
-            text-transform: uppercase;
-            box-shadow: 4px 4px 0 var(--color-dark-gray);
-        }
+    /* --- CTA BUTTON --- */
+    .cta-btn {
+        background-color: var(--color-accent-red);
+        color: var(--color-light-cream);
+        padding: 15px 30px;
+        border-radius: 5px;
+        font-family: var(--font-heading);
+        box-shadow: 4px 4px 0 var(--color-dark-gray);
+        display: inline-block;
+        text-decoration: none;
+        font-size: 1.2em;
+    }
 
-        .cta-btn:hover {
-            background-color: #7a1114;
-            transform: translateY(-2px);
-            box-shadow: 6px 6px 0 var(--color-dark-gray);
-        }
+    .cta-btn:hover {
+        background-color: #7a1114;
+        transform: translateY(-2px);
+    }
 
-        /* ====================================================
-        *** DIGITAL MARKETING SECTION STYLES ***
-        ====================================================
-        */
+    /* --- CONTENT LAYOUT --- */
+    .page-container {
+        display: flex;
+        gap: 20px;
+        padding: 40px 5%;
+        max-width: 1200px;
+        margin: 50px auto 0;
+    }
 
+    .content-section {
+        flex: 1;
+        color: white;
+    }
+
+    .content-section h1 {
+        font-size: 3em;
+        color: var(--color-primary-yellow);
+    }
+
+    .service-description {
+        background: white;
+        color: var(--color-dark-gray);
+        padding: 20px;
+        border-left: 5px solid var(--color-accent-red);
+        border-radius: 4px;
+    }
+
+    .modal-cta-footer {
+        color: white;
+        margin: 25px 0;
+        font-weight: bold;
+        border-top: 1px solid var(--color-primary-yellow);
+        padding-top: 15px;
+    }
+
+    /* --- VIDEO/IMAGE SECTION --- */
+    .video-section {
+        flex: 0 0 400px;
+        max-width: 100%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+    }
+
+    .digital-marketing-video {
+        width: 100%;
+        height: auto;
+        border-radius: 6px;
+    }
+
+    /* --- NEWSLETTER --- */
+    .newsletter-section {
+        background: var(--color-dark-gray);
+        color: var(--color-light-cream);
+        padding: 50px 5%;
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    .newsletter-section h3 {
+        color: var(--color-primary-yellow);
+        font-size: 2.5em;
+    }
+
+    .subscribe-form {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .subscribe-form input {
+        padding: 12px;
+        width: 250px;
+        border-radius: 4px 0 0 4px;
+        border: none;
+    }
+
+    .subscribe-form button {
+        padding: 12px 20px;
+        border-radius: 0 4px 4px 0;
+        background: var(--color-primary-yellow);
+        border: none;
+        font-family: var(--font-heading);
+        cursor: pointer;
+    }
+
+    /* --- FOOTER --- */
+    footer {
+        background: var(--color-dark-gray);
+        color: var(--color-light-cream);
+        padding: 20px;
+        text-align: center;
+        font-size: .9em;
+    }
+
+    /* =====================================================
+       📱 MOBILE RESPONSIVENESS 
+       ===================================================== */
+
+    @media (max-width: 992px) {
         .page-container {
-            /* 💥 CHANGE 2: Set background to transparent. The body now provides the blue background. */
-            background-color: transparent; 
-            padding: 40px 5%; 
-            
-            display: flex; 
-            gap: 20px; 
-            /* Content centering remains the same */
-            max-width: 1200px; 
-            margin: 0 auto; 
-            margin-top: 50px;
-        }
-
-        .content-section {
-            flex: 1; 
-            padding: 0; 
-            max-width: none;
-            text-align: left; 
-            line-height: 1.7;
-            color: white; 
-        }
-
-        .content-section h1 {
-            font-size: 3em;
-            color: var(--color-primary-yellow); 
-            margin-bottom: 20px;
-        }
-        
-        .service-description {
-    font-size: 1.1em;
-    margin-bottom: 30px;
-    padding: 20px;
-    background-color: white; /* 💥 Change: make container white */
-    color: var(--color-dark-gray); /* Change text color for readability */
-    border-left: 5px solid var(--color-accent-red); 
-    border-radius: 4px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
-
-        
-        .modal-cta-footer {
-            font-style: italic;
-            font-weight: bold;
-            margin-top: 30px;
-            padding: 15px;
-            border-top: 1px solid var(--color-primary-yellow);
-            color: white; 
+            flex-direction: column;
+            text-align: center;
         }
 
         .video-section {
-            flex: 0 0 400px; 
-            max-width: 100%;
-            margin-top: 120px; 
-            align-self: flex-start; 
+            margin-top: 20px;
+            flex: unset;
         }
 
-        .digital-marketing-video {
-            width: 100%; 
-            height: auto;
-            display: block;
-        }
-
-        /* ====================================================
-        *** NEWSLETTER AND FOOTER STYLES ***
-        ====================================================
-        */
-
-        /* --- NEWSLETTER SECTION --- */
-        .newsletter-section {
-    background-color: var(--color-dark-gray); /* Matches header */
-    color: var(--color-light-cream); /* Keep text readable */
-    padding: 40px 5%;
-    text-align: center;
-    margin-top: 50px;
-}
-
-footer {
-    background-color: var(--color-dark-gray); /* Matches header */
-    color: var(--color-light-cream); /* Keep text readable */
-    padding: 20px;
-    text-align: center;
-    font-size: 0.8em;
-}
-.subscribe-form input[type="email"] {
-    padding: 12px;
-    border: none;
-    border-radius: 4px 0 0 4px;
-    width: 280px;
-    max-width: 70%;
-    font-family: var(--font-text);
-    background-color: #ffffff; /* Make input box white */
-    color: var(--color-dark-gray); /* Text inside input is dark for readability */
-}
-
-        .newsletter-section h3 {
-            color: var(--color-primary-yellow);
+        .content-section h1 {
             font-size: 2.5em;
-            margin-bottom: 10px;
+        }
+    }
+
+    @media (max-width: 600px) {
+        header {
+            flex-direction: column;
+            gap: 15px;
         }
 
-        .subscribe-form input[type="email"] {
-            padding: 12px;
-            border: none;
-            border-radius: 4px 0 0 4px;
-            width: 280px;
-            max-width: 70%;
-            font-family: var(--font-text);
+        nav ul {
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
+        .service-description {
+            font-size: 1em;
+        }
+
+        .content-section h1 {
+            font-size: 2em;
+        }
+
+        .subscribe-form {
+            flex-direction: column;
+        }
+
+        .subscribe-form input,
         .subscribe-form button {
-            padding: 12px 25px;
-            border: none;
-            background-color: var(--color-primary-yellow);
-            color: var(--color-dark-gray);
-            cursor: pointer;
-            border-radius: 0 4px 4px 0;
-            font-weight: bold;
-            margin-left: -5px; 
-            transition: background-color 0.3s;
-            text-transform: uppercase;
-            font-family: var(--font-heading);
+            width: 100%;
+            border-radius: 4px;
+            margin: 5px 0;
         }
+    }
+</style>
 
-        .subscribe-form button:hover {
-             background-color: #c99c15; 
-        }
-        
-        /* --- FOOTER --- */
-        footer {
-             background-color: var(--color-dark-gray);
-             color: var(--color-light-cream);
-             padding: 20px;
-             text-align: center;
-             font-size: 0.8em;
-        }
-    </style>
 </head>
 <body>
 
