@@ -11,231 +11,288 @@
 
     <style>
     /* --- DESIGN SYSTEM VARIABLES --- */
-    :root {
-        --font-heading: 'Bebas Neue', sans-serif;
-        --font-text: 'Open Sans', sans-serif;
+:root {
+    --font-heading: 'Bebas Neue', sans-serif;
+    --font-text: 'Open Sans', sans-serif;
 
-        --color-black: #000000;
-        --color-primary-yellow: #dfb127;
-        --color-accent-red: #a6171c;
-        --color-dark-gray: #1c1a1b;
-        --color-primary-blue: #1f4280;
-        --color-success-green: #027953;
-        --color-light-cream: #f7efdf;
-    }
+    --color-black: #000000;
+    --color-primary-yellow: #dfb127;
+    --color-accent-red: #a6171c;
+    --color-dark-gray: #1c1a1b;
+    --color-primary-blue: #1f4280;
+    --color-success-green: #027953;
+    --color-light-cream: #f7efdf;
+}
 
-    /* --- BASE --- */
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: var(--font-text);
-        background-color: #1C5297;
-        color: var(--color-dark-gray);
-        line-height: 1.6;
-        overflow-x: hidden; /* Prevents horizontal scroll */
-    }
+/* --- BASE --- */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-text);
+    background-color: #1C5297;
+    color: var(--color-dark-gray);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
 
-    h1, h2, h3, h4 {
-        font-family: var(--font-heading);
-        color: var(--color-primary-blue);
-        text-transform: uppercase;
-    }
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    color: var(--color-primary-blue);
+    text-transform: uppercase;
+    margin: 0.5em 0;
+}
 
-    /* --- HEADER --- */
-    header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 15px 5%;
-        background-color: var(--color-dark-gray);
-        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    }
+/* --- HEADER --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    background-color: var(--color-dark-gray);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
 
-    nav ul {
-        display: flex;
-        gap: 10px;
-    }
+.logo-img {
+    height: 50px;
+}
 
-    nav ul li a {
-        color: var(--color-light-cream);
-        text-decoration: none;
-        padding: 10px 15px;
-        font-family: var(--font-heading);
-        letter-spacing: 1px;
-    }
+nav ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    gap: 10px;
+}
 
-    nav ul li a:hover {
-        color: var(--color-primary-yellow);
-    }
+nav ul li a {
+    color: var(--color-light-cream);
+    text-decoration: none;
+    padding: 10px 15px;
+    font-family: var(--font-heading);
+    letter-spacing: 1px;
+}
 
-    .social-icons a {
-        color: var(--color-primary-yellow);
-        margin-left: 15px;
-    }
+nav ul li a:hover {
+    color: var(--color-primary-yellow);
+}
 
-    /* --- CTA BUTTON --- */
-    .cta-btn {
-        background-color: var(--color-accent-red);
-        color: var(--color-light-cream);
-        padding: 15px 30px;
-        border-radius: 5px;
-        font-family: var(--font-heading);
-        box-shadow: 4px 4px 0 var(--color-dark-gray);
-        display: inline-block;
-        text-decoration: none;
-        font-size: 1.2em;
-    }
+.social-icons a {
+    color: var(--color-primary-yellow);
+    margin-left: 15px;
+}
 
-    .cta-btn:hover {
-        background-color: #7a1114;
-        transform: translateY(-2px);
-    }
+/* --- CTA BUTTON --- */
+.cta-btn {
+    background-color: var(--color-accent-red);
+    color: var(--color-light-cream);
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-family: var(--font-heading);
+    box-shadow: 4px 4px 0 var(--color-dark-gray);
+    display: inline-block;
+    text-decoration: none;
+    font-size: 1.2em;
+    letter-spacing: 1px;
+}
+.cta-btn:hover {
+    background-color: #7a1114;
+    transform: translateY(-2px);
+}
 
-    /* --- CONTENT LAYOUT --- */
+/* --- PAGE LAYOUT --- */
+.page-container {
+    display: flex;
+    gap: 20px;
+    padding: 40px 5%;
+    max-width: 1200px;
+    margin: 50px auto 0;
+}
+
+.content-section {
+    flex: 1;
+    color: white;
+}
+
+.content-section h1 {
+    font-size: 3em;
+    color: var(--color-primary-yellow);
+}
+
+.service-description {
+    background: white;
+    color: var(--color-dark-gray);
+    padding: 20px;
+    border-left: 5px solid var(--color-accent-red);
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.modal-cta-footer {
+    color: white;
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px solid var(--color-primary-yellow);
+    font-weight: bold;
+}
+
+.video-section {
+    flex: 0 0 400px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.digital-marketing-video {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* --- NEWSLETTER --- */
+.newsletter-section {
+    background: var(--color-dark-gray);
+    color: var(--color-light-cream);
+    padding: 50px 5%;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.newsletter-section h3 {
+    color: var(--color-primary-yellow);
+    font-size: 2.5em;
+}
+
+.subscribe-form {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.subscribe-form input {
+    padding: 12px;
+    width: 250px;
+    border-radius: 4px 0 0 4px;
+    border: none;
+}
+
+.subscribe-form button {
+    padding: 12px 20px;
+    border-radius: 0 4px 4px 0;
+    background: var(--color-primary-yellow);
+    border: none;
+    color: var(--color-dark-gray);
+    font-family: var(--font-heading);
+    cursor: pointer;
+}
+
+/* --- FOOTER --- */
+footer {
+    background: var(--color-dark-gray);
+    color: var(--color-light-cream);
+    padding: 20px;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+/* =====================================================
+   📱 RESPONSIVE FIXES (TABLET + MOBILE)
+   ===================================================== */
+
+/* TABLETS */
+@media (max-width: 992px) {
     .page-container {
-        display: flex;
-        gap: 20px;
-        padding: 40px 5%;
-        max-width: 1200px;
-        margin: 50px auto 0;
+        flex-direction: column;
+        text-align: center;
     }
 
-    .content-section {
-        flex: 1;
-        color: white;
+    .video-section {
+        margin-top: 20px;
+        flex: unset;
     }
 
     .content-section h1 {
-        font-size: 3em;
-        color: var(--color-primary-yellow);
+        font-size: 2.5em;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .page-container {
+        flex-direction: column;
+        padding: 20px 5%;
+        margin-top: 20px;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .content-section h1 {
+        font-size: 1.9em;
+        line-height: 1.1;
+        margin-bottom: 15px;
     }
 
     .service-description {
-        background: white;
-        color: var(--color-dark-gray);
-        padding: 20px;
-        border-left: 5px solid var(--color-accent-red);
-        border-radius: 4px;
+        margin: 0 auto 20px;
+        padding: 15px;
+        font-size: 0.95em;
     }
 
     .modal-cta-footer {
-        color: white;
-        margin: 25px 0;
-        font-weight: bold;
-        border-top: 1px solid var(--color-primary-yellow);
-        padding-top: 15px;
+        margin-top: 15px;
+        padding-top: 10px;
+        font-size: 0.95em;
     }
 
-    /* --- VIDEO/IMAGE SECTION --- */
+    .cta-btn {
+        width: 100%;
+        padding: 14px;
+        font-size: 1.1em;
+        margin-top: 10px;
+        text-align: center;
+    }
+
     .video-section {
-        flex: 0 0 400px;
-        max-width: 100%;
+        width: 100%;
+        margin-top: 10px;
         display: flex;
-        align-items: flex-start;
         justify-content: center;
     }
 
     .digital-marketing-video {
         width: 100%;
+        max-width: 350px;
         height: auto;
-        border-radius: 6px;
-    }
-
-    /* --- NEWSLETTER --- */
-    .newsletter-section {
-        background: var(--color-dark-gray);
-        color: var(--color-light-cream);
-        padding: 50px 5%;
-        text-align: center;
-        margin-top: 50px;
-    }
-
-    .newsletter-section h3 {
-        color: var(--color-primary-yellow);
-        font-size: 2.5em;
     }
 
     .subscribe-form {
-        display: flex;
-        justify-content: center;
-        margin-top: 20px;
+        flex-direction: column;
+        gap: 10px;
     }
 
-    .subscribe-form input {
-        padding: 12px;
-        width: 250px;
-        border-radius: 4px 0 0 4px;
-        border: none;
-    }
-
+    .subscribe-form input,
     .subscribe-form button {
-        padding: 12px 20px;
-        border-radius: 0 4px 4px 0;
-        background: var(--color-primary-yellow);
-        border: none;
-        font-family: var(--font-heading);
-        cursor: pointer;
+        width: 100%;
+        border-radius: 4px;
     }
-
-    /* --- FOOTER --- */
-    footer {
-        background: var(--color-dark-gray);
-        color: var(--color-light-cream);
-        padding: 20px;
-        text-align: center;
-        font-size: .9em;
+}
+/* Apply margin only on small devices */
+@media (max-width: 768px) {
+    .hero-section {
+        margin-top: 50px; /* adjust to your needs */
     }
+}
 
-    /* =====================================================
-       📱 MOBILE RESPONSIVENESS 
-       ===================================================== */
-
-    @media (max-width: 992px) {
-        .page-container {
-            flex-direction: column;
-            text-align: center;
-        }
-
-        .video-section {
-            margin-top: 20px;
-            flex: unset;
-        }
-
-        .content-section h1 {
-            font-size: 2.5em;
-        }
-    }
-
-    @media (max-width: 600px) {
-        header {
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        nav ul {
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .service-description {
-            font-size: 1em;
-        }
-
-        .content-section h1 {
-            font-size: 2em;
-        }
-
-        .subscribe-form {
-            flex-direction: column;
-        }
-
-        .subscribe-form input,
-        .subscribe-form button {
-            width: 100%;
-            border-radius: 4px;
-            margin: 5px 0;
-        }
-    }
 </style>
 
 </head>
@@ -263,7 +320,7 @@
         <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
     </div>
 </header>
-
+<section class="hero-section">
 <div class="page-container">
     <main class="content-section">
 
@@ -284,6 +341,9 @@
 
     </div>
 </div>
+
+</section>
+
 
 <section class="newsletter-section">
     <h3>Join Our League Of Heroes</h3>
