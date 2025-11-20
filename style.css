@@ -577,15 +577,26 @@ nav ul li a:hover::after {
     50% { transform: translateY(-15px) rotateY(5deg) rotateX(-5deg); }
 }
 
-/* === NEWSLETTER SECTION (NEW) === */
+/* === NEWSLETTER SECTION (UPDATED FOR GIF) === */
 .newsletter-section {
     background: var(--color-black);
     padding: 4rem 8%;
-    text-align: center;
     border-top: 1px solid var(--color-dark-grey);
     border-bottom: 1px solid var(--color-dark-grey);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
 }
 
+/* Wraps the text + form */
+.newsletter-content {
+    flex: 1;
+    text-align: left;
+}
+
+/* Heading */
 .newsletter-section h3 {
     font-family: var(--font-heading);
     font-size: 2.5rem;
@@ -596,22 +607,65 @@ nav ul li a:hover::after {
     text-shadow: 2px 2px 0 var(--color-red);
 }
 
+/* Description */
 .newsletter-section p {
     font-size: 1rem;
     color: var(--color-off-white);
     margin-bottom: 2rem;
     max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
-.subscribe-form {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    max-width: 500px;
-    margin: 0 auto;
+/* Right-side GIF */
+.newsletter-gif img {
+    width: 260px;
+    height: auto;
+    border-radius: 12px;
 }
+
+/* Desktop-only alignment spacing */
+@media (min-width: 1024px) {
+    .newsletter-section h3,
+    .newsletter-section p,
+    .subscribe-form {
+        margin-left: 210px;
+    }
+
+    .newsletter-gif img {
+        margin-right: 210px;
+    }
+}
+
+/* === RESPONSIVE FIXES === */
+@media (max-width: 768px) {
+    .newsletter-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 3rem 1.5rem;
+    }
+
+    .newsletter-content {
+        text-align: center;
+    }
+
+    .newsletter-section h3,
+    .newsletter-section p {
+        margin-left: 0; /* Reset */
+    }
+
+    .newsletter-gif img {
+        width: 200px;
+        margin-right: 0; /* Reset */
+        margin-top: 20px;
+    }
+
+    .subscribe-form {
+        margin-left: 0; /* Reset */
+        flex-direction: column;
+        width: 100%;
+        gap: 0.75rem;
+    }
+}
+
 
 .subscribe-form input[type="email"] {
     padding: 0.8rem 1.2rem;
