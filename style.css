@@ -496,13 +496,14 @@ nav ul li a:hover::after {
     color: var(--color-black); /* Text on yellow background */
     --card-hover-rgb: 223, 177, 39; /* RGB for yellow */
 }
-.digital-marketing h3 { color: var(--color-black); } /* Ensure heading is black */
+.digital-marketing h3 { color: var(--color-off-white); } 
 .digital-marketing p { color: #555; } /* Darker text for readability */
 .digital-marketing .learn-more-btn {
     background: var(--color-black);
     color: var(--color-yellow);
     box-shadow: inset 0 0 0 2px var(--color-yellow);
 }
+
 .digital-marketing .learn-more-btn:hover {
     background: var(--color-red);
     color: var(--color-off-white);
@@ -799,4 +800,131 @@ footer {
         margin: 0 0.5rem;
         font-size: 1.5rem;
     }
+}
+/* In your style.css or a <style> block */
+.marvel-approach-section {
+  background-color: #027953; /* Dark Green */
+}.approach-cards {
+  display: flex; /* Enables Flexbox layout */
+  justify-content: space-between; /* Distributes space between the cards */
+  gap: 20px; /* Optional: Adds space between the cards */
+}
+
+/* Optional: To ensure the cards take up equal width */
+.approach-card {
+  flex: 1; 
+}
+/* Add this to your main CSS file */
+.approach-card.digital-marketing {
+  /* This centers all inline content (like the text and link) */
+  text-align: center;
+}
+
+/* Ensure the button/link is treated as a block element 
+   if it needs to occupy the full centered space, though 
+   it should center with text-align: center; */
+.approach-card.digital-marketing .learn-more-btn {
+  display: block; /* Make it take up its own line */
+  margin: 0 auto; /* Center the block element itself */
+}
+.learn-more-btn {
+    background: #ffffff;
+    color: #027953;
+    padding: 10px 20px;
+    border-radius: 6px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.learn-more-btn:hover {
+    background: #e8e8e8;
+}
+
+.approach-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 20px;
+}
+
+.approach-card {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+}
+/* Containers */
+.approach-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 20px;
+}
+
+.approach-card {
+    padding: 25px;
+    border-radius: 12px;
+    color: white;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+}
+
+/* CARD COLORS */
+.digital-marketing {
+    background-color: #E8B740; /* Yellow */
+    color: #222;
+}
+
+.business-development {
+    background-color: #0F8A68; /* Teal Green */
+}
+
+.bbbee-partnerships {
+    background-color: #2F3E9E; /* Navy Blue */
+}
+
+/* Button */
+.learn-more-btn {
+    background: rgba(0,0,0,0.75);
+    color: white;
+    padding: 10px 25px;
+    border-radius: 6px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.learn-more-btn:hover {
+    background: black;
+}
+.approach-cards {
+    display: flex;
+    gap: 20px;
+}
+
+.approach-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;  /* pushes button to bottom */
+    align-items: center;             /* centers button horizontally */
+    height: 290px;                   /* same height for all cards */
+    padding: 20px;
+    border-radius: 12px;
+    color: white;
+    text-align: center;              /* center the text too */
+}
+
+/* Ensure description grows and pushes button down */
+.approach-card p {
+    flex-grow: 1;
+    margin-bottom: 20px;
+}
+
+/* Center the button */
+.learn-more-btn {
+    margin-top: auto;
+    display: inline-block;
 }
